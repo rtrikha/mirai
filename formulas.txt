@@ -1,0 +1,8 @@
+
+Physical = 23
+Emotional = 28
+Intellectual = 33
+Spiritual = 53
+Awareness = 48
+Aesthetic = 43
+Intuition = 38 
