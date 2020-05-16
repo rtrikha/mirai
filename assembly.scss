@@ -55,6 +55,7 @@ body {
         margin-right: 8vw;
         animation-name: reveal-prime;
         animation-duration: 2s;
+        display: none;
 }
 
 .prime-holder .header{
@@ -86,6 +87,10 @@ body {
         letter-spacing:-0.1px;
 }
 
+.rhythm{
+        width: 400px;
+        height: 400px;
+}
 
 
 @keyframes reveal-prime {

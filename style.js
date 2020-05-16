@@ -1,9 +1,7 @@
-
 function popLogoReveal(){
     document.getElementById('logo-reveal').style.display="none";
 }
 setTimeout(popLogoReveal,0000);
-
 
 
 document.getElementById("what-content").textContent="mirai is based on the Biorhythm Theory. It works on the belief that human lives move in predictable separate cycles. The major three cycles are Physical, Emotional and Intellectual. The concept of these cycles start from the day of your birth and they repeat every 58 years, 2 months and about 7 days depending on the position of the leap years and length of the month.";
