@@ -1,0 +1,98 @@
+$background-primary: #111111;
+$accent: #fc533e;
+$pure-black: #000000;
+$pure-white: #ffffff;
+$grey-100: #aaaaaa;
+$grey-200: #555555;
+$grey-300: #333333;
+
+$base-font-size: 14px;
+$logo-reveal-size: 40px;
+$base-line-heigh: 20px;
+$base-font-family: Space-Mono;
+
+@font-face {
+        src: url(assets/fonts/SpaceMono-Bold.ttf);
+        font-family: Space-Mono;
+        font-weight: 700;
+}
+@font-face {
+        src: url(assets/fonts/SpaceMono-Regular.ttf);
+        font-family: Space-Mono;
+        font-weight: 400;
+}
+@font-face {
+        src: url(assets/fonts/Japan.ttf);
+        font-family: Japan;
+}
+
+body {
+        background-color: $background-primary;
+        display: block;
+        margin: 0;
+}
+
+
+.logo-reveal {
+        font-size: $logo-reveal-size;
+        color: $pure-white;
+        font-family: Japan;
+        letter-spacing: 2px;
+        text-align: center;
+        background-color: $background-primary;
+        padding-top: 44vh;
+        width: 100vw;
+        height: 100vh;
+}
+
+.black-box-cursor {
+        color: $grey-300;
+}
+
+.prime-holder{
+        height: 100%;
+        margin-left: 8vw;
+        margin-right: 8vw;
+        animation-name: reveal-prime;
+        animation-duration: 2s;
+}
+
+.prime-holder .header{
+        margin-top: 8vh;
+        display: flex;
+}
+
+.content{
+        margin-top: 8vh;
+        
+}
+
+.content .heading{
+        font-size: $base-font-size;
+        font-family: $base-font-family;
+        color: $grey-100;
+        letter-spacing:-0.2px;
+        margin-top: 6vh;
+
+}
+
+.content .description{
+        font-size: 12px;
+        margin-top: 8px;
+        font-family: $base-font-family;
+        color: $grey-200;
+        line-height: $base-line-heigh;
+        width: 50vw;
+        letter-spacing:-0.1px;
+}
+
+
+
+@keyframes reveal-prime {
+        from {
+        }
+        to {
+
+        }
+}
+

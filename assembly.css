@@ -1,0 +1,92 @@
+@font-face {
+  src: url(assets/fonts/SpaceMono-Bold.ttf);
+  font-family: Space-Mono;
+  font-weight: 700;
+}
+
+@font-face {
+  src: url(assets/fonts/SpaceMono-Regular.ttf);
+  font-family: Space-Mono;
+  font-weight: 400;
+}
+
+@font-face {
+  src: url(assets/fonts/Japan.ttf);
+  font-family: Japan;
+}
+
+body {
+  background-color: #111111;
+  display: block;
+  margin: 0;
+}
+
+.logo-reveal {
+  font-size: 40px;
+  color: #ffffff;
+  font-family: Japan;
+  letter-spacing: 2px;
+  text-align: center;
+  background-color: #111111;
+  padding-top: 44vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.black-box-cursor {
+  color: #333333;
+}
+
+.prime-holder {
+  height: 100%;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  -webkit-animation-name: reveal-prime;
+          animation-name: reveal-prime;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.prime-holder .header {
+  margin-top: 8vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content {
+  margin-top: 8vh;
+}
+
+.content .heading {
+  font-size: 14px;
+  font-family: Space-Mono;
+  color: #aaaaaa;
+  letter-spacing: -0.2px;
+  margin-top: 6vh;
+}
+
+.content .description {
+  font-size: 12px;
+  margin-top: 8px;
+  font-family: Space-Mono;
+  color: #555555;
+  line-height: 20px;
+  width: 50vw;
+  letter-spacing: -0.1px;
+}
+
+@-webkit-keyframes reveal-prime {
+  from {
+  }
+  to {
+  }
+}
+
+@keyframes reveal-prime {
+  from {
+  }
+  to {
+  }
+}
+/*# sourceMappingURL=assembly.css.map */

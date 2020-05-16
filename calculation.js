@@ -8,8 +8,6 @@ const intuitionCycle = 38;
 
 const pi = Math.PI;
 
-// var value = Math.sin((2 * Math.PI * 8670) / 28);
-
 const msPerDay = 1000 * 60 * 60 * 24;
 const today = new Date().toISOString().slice(0, 10);
 
