@@ -21,18 +21,17 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .logo-reveal {
-  font-size: 58px;
+  font-size: 54px;
   color: #ffffff;
   font-family: Japan;
   letter-spacing: 2px;
   text-align: center;
-  padding-top: 44vh;
+  padding-top: 40vh;
   display: block;
-  width: 100vw;
-  height: 100vh;
 }
 
 .black-box-cursor {
@@ -54,17 +53,18 @@ body {
   opacity: 0;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
+  overflow-x: hidden;
 }
 
 .prime-holder .header {
-  margin-top: 8vh;
+  margin-top: 6vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
 .content {
-  margin-top: 28vh;
+  margin-top: 20vh;
 }
 
 .content .heading {
@@ -120,7 +120,7 @@ body {
 .input .title {
   color: #aaaaaa;
   font-family: Space-Mono;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: -0.2px;
 }
 
@@ -132,7 +132,7 @@ body {
   margin-top: 1vh;
   outline: transparent;
   font-family: Space-Mono;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: -0.2px;
   cursor: pointer;
   caret-color: #fc533e;
@@ -159,7 +159,7 @@ body {
 }
 
 .megatrox-text {
-  font-size: 24px;
+  font-size: 18px;
   font-family: Space-Mono;
   letter-spacing: -0.8px;
   color: #ffffff;
@@ -174,7 +174,7 @@ body {
   color: #555555;
   cursor: pointer;
   font-family: Space-Mono;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -210,7 +210,7 @@ body {
 
 .modal-content {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   height: 72vh;
   width: 60vw;
@@ -311,4 +311,9 @@ body {
 .intellectual svg {
   position: relative;
 }
-/*# sourceMappingURL=assembly.css.map */
+
+#mirai-logo {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+/*# sourceMappingURL=mobile-assembly.css.map */
