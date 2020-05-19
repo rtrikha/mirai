@@ -45,6 +45,8 @@ body {
   margin-right: 8vw;
   -webkit-animation-name: reveal-prime;
           animation-name: reveal-prime;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
   -webkit-animation-timing-function: ease-in-out;
@@ -135,7 +137,7 @@ body {
   cursor: pointer;
   caret-color: #fc533e;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 16px;
 }
 
 #dob :focus {
@@ -190,12 +192,12 @@ body {
 }
 
 .modal {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   visibility: hidden;
   -webkit-transform: scale(1.1);
@@ -210,12 +212,14 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  height: 72vh;
+  width: 60vw;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: #111111;
   padding: 1rem 1.5rem;
-  width: 24rem;
   border-radius: 0.5rem;
+  overflow: scroll;
 }
 
 .close-button {
@@ -225,11 +229,8 @@ body {
   text-align: center;
   cursor: pointer;
   border-radius: 0.25rem;
-  background-color: lightgray;
-}
-
-.close-button:hover {
-  background-color: darkgray;
+  color: #ffffff;
+  font-size: 20px;
 }
 
 .show-modal {
@@ -237,9 +238,63 @@ body {
   visibility: visible;
   -webkit-transform: scale(1);
           transform: scale(1);
+  width: 100%;
+  height: 100%;
   -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
+}
+
+.content-modal {
+  margin-top: 6vh;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 4vh;
+}
+
+.content-modal .heading {
+  color: #ffffff;
+  font-family: Space-Mono;
+  font-size: 14px;
+  margin-top: 4vh;
+}
+
+.content-modal .response {
+  color: #ffffff;
+  font-family: Space-Mono;
+  font-size: 12px;
+  margin-top: 1vh;
+  line-height: 20px;
+  opacity: 0.8;
+}
+
+#enter-icon {
+  opacity: 0;
+  margin-left: 1vw;
+  position: absolute;
+  margin-top: 1vh;
+}
+
+#dob:focus + #enter-icon {
+  opacity: 0.5;
+}
+
+.minigraphs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#intellectual {
+  position: relative;
+}
+
+#physical {
+  position: relative;
+}
+
+#emotional {
+  position: relative;
 }
 /*# sourceMappingURL=assembly.css.map */

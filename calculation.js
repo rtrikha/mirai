@@ -17,9 +17,10 @@ var today = yyyy + '-' + mm + '-' + dd;
 var backDates = [];
 var futureDates = [];
 var differences = [];
-var values = [];
-
-let computedDates = [];
+var computedDates = [];
+var intellectualValues = [];
+var physicalValues = [];
+var emotionalValues = [];
 
 function dateDifference(from, to) {
 	from = new Date(from);
@@ -40,14 +41,14 @@ function dateDifference(from, to) {
 	return Math.floor((utc2 - utc1) / msPerDay);
 }
 
-for (i = 1; i <= 15; i++) {
+for (i = 1; i <= 30; i++) {
 	//past seven days
 	var back = new Date(today);
 	back.setDate(back.getDate() - i);
 	var ddBack = back.getDate();
 	var mmBack = back.getMonth() + 1;
 	var yyBack = back.getFullYear();
-	backDates[i] = yyBack + '-' + mmBack + '-' + ddBack;
+	//backDates[i] = yyBack + '-' + mmBack + '-' + ddBack;
 
 	//future seven days
 	var future = new Date(today);
@@ -55,19 +56,24 @@ for (i = 1; i <= 15; i++) {
 	var ddFuture = future.getDate();
 	var mmFuture = future.getMonth() + 1;
 	var yyFuture = future.getFullYear();
-	futureDates[i] =
-		yyFuture + '-' + mmFuture + '-' + ddFuture;
+	futureDates[i] = yyFuture + '-' + mmFuture + '-' + ddFuture;
 }
 
 computedDates.push(backDates.reverse());
 computedDates.push(today);
 computedDates.push(futureDates);
-var newDates2 = computedDates.flatMap((x) => x);
+var compliedDates = computedDates.flatMap((x) => x);
 
-console.log(newDates2)
+console.log(compliedDates)
+
 
 for (i = 0; i <= 30; i++) {
-	differences[i] = dateDifference('1996-8-19', newDates2[i]);
-	values[i] =100 * Math.sin((2 * pi * differences[i]) / intellectualCycle);
-	values[i] = Math.round(values[i]);
+	differences[i] = dateDifference('1996-8-19', compliedDates[i]);
+	intellectualValues[i] =Math.round(100 * Math.sin((2 * pi * differences[i]) / intellectualCycle));
+	physicalValues[i] =Math.round(100 * Math.sin((2 * pi * differences[i]) / physicalCycle));
+	emotionalValues[i] =Math.round(100 * Math.sin((2 * pi * differences[i]) / emotionalCycle));
 }
+
+console.log(intellectualValues[0])
+console.log(physicalValues[0])
+console.log(emotionalValues[0])

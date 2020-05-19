@@ -1,19 +1,9 @@
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display =
 		'none';
-	//document.getElementById('logo-reveal').style.transition="opacity";
 	document.getElementById('logo-reveal').style.opacity = '0';
 }
 setTimeout(popLogoReveal, 0000);
-
-document.getElementById('what-content').textContent =
-	'mirai is based on the Biorhythm Theory. It works on the belief that human lives move in predictable separate cycles. The major three cycles are Physical, Emotional and Intellectual. The concept of these cycles start from the day of your birth and they repeat every 58 years, 2 months and about 7 days depending on the position of the leap years and length of the month.';
-document.getElementById('how-content').textContent =
-	'mirai uses mathematical formulas to compute the prediction. These are sin functions of constants and variables. Drop me an email to understand the math behind :)';
-document.getElementById('graph').textContent =
-	'Your biorhythm above the horizontal line indicates that your capacity in that area is enhanced; you feel stronger, more alert, more connected, more empathetic. These are times when you are able to do more, be more, enjoy more. When the biorhythm lines are below 0%, your capacity is diminished, and conservative behavior is recommended. The cross-section of all three curves has the strongest meaning and usually announces a particular event or phase (positive or negative) in which you are.';
-document.getElementById('trust').textContent =
-	'mirai works on the belief of a study first tried in late 19th century. The output from mirai is mere a implication of this study. We do not state this as your future or any other calculation.';
 
 var date = document.getElementById('dob');
 
@@ -38,28 +28,33 @@ date.addEventListener('input', function (e) {
 	var values = input.split('/').map(function (v) {
 		return v.replace(/\D/g, '');
 	});
-	if (values[0]) values[0] = checkValue(values[0], 31);
 	if (values[1]) values[1] = checkValue(values[1], 12);
+	if (values[2]) values[2] = checkValue(values[2], 31);
 	var output = values.map(function (v, i) {
-		return v.length == 2 && i < 2 ? v + ' / ' : v;
+		return v.length == 4 && i < 2 ? v + ' / ' : v;
 	});
 	this.value = output.join('').substr(0, 14);
 });
 
 //d3
 
-var dataBinder = [];
 
-for (i = 0; i < values.length; i++) {
-	dataBinder[i] = values[i];
-	console.log(dataBinder[i]);
+const dataBinder1 = intellectualValues.map((x, i) => {
+	return [i * 10, x];
+});
 
-	for (j = 0; j < values.length; j++) {
-		dataBinder[i][j] = dataBinder[i];
-	}
-}
+const dataBinder2 = physicalValues.map((x, i) => {
+	return [i * 10, x];
+});
 
-//console.log(dataBinder);
+const dataBinder3 = emotionalValues.map((x, i) => {
+	return [i * 10, x];
+});
+
+var coordsIntellectual = dataBinder1;
+var coordsPhysical = dataBinder2;
+var coordsEmotional = dataBinder3;
+
 var scale = d3
 	.scaleLinear()
 	.domain([-120, 120])
@@ -75,49 +70,38 @@ var bezierLine = d3
 	})
 	.curve(d3.curveBasis);
 
-var svg = d3
+var svg1 = d3
 	.select('#intellectual')
 	.append('svg')
 	.attr('width', 400)
 	.attr('height', 240)
+	//.attr("viewBox", "0 0 300 150") 300 150
 	.attr('transform', 'scale(0.5)')
 	.attr('preserveAspectRatio', 'xMidYMid meet');
 
-const path = svg
+var svg2 = d3
+	.select('#physical')
+	.append('svg')
+	.attr('width', 400)
+	.attr('height', 240)
+	.attr('transform', 'scale(0.5)')
+	.attr('preserveAspectRatio', 'xMidYMid meet');	
+
+var svg3 = d3
+	.select('#emotional')
+	.append('svg')
+	.attr('width', 400)
+	.attr('height', 240)
+	.attr('transform', 'scale(0.5)')
+	.attr('preserveAspectRatio', 'xMidYMid meet');	
+
+const path1 = svg1
 	.append('path')
-	.attr(
-		'd',
-		bezierLine([
-			[0, -62],
-			[10, -76],
-			[20, -87],
-			[30, -95],
-			[40, -99],
-			[50, -100],
-			[60, -97],
-			[70, -91],
-			[80, -81],
-			[90, -69],
-			[100, -54],
-			[110, -37],
-			[120, -19],
-			[130, 0],
-			[140, 19],
-			[150, 37],
-			[160, 54],
-			[170, 69],
-			[180, 81],
-			[190, 91],
-			[200, 97],
-			[210, 100],
-			[220, 99],
-		]),
-	)
+	.attr('d', bezierLine(coordsIntellectual))
 	.attr('stroke', 'white')
 	.attr('stroke-width', 8)
 	.attr('stroke-linecap', 'round')
 	.attr('fill', 'none')
-
 	.transition()
 	.duration(1500)
 	.attrTween('stroke-dasharray', function () {
@@ -126,6 +110,47 @@ const path = svg
 			return d3.interpolateString('0,' + len, len + ',0')(t);
 		};
 	});
+
+const path2 = svg2
+	.append('path')
+	.attr('d', bezierLine(coordsPhysical))
+	.attr('stroke', 'red')
+	.attr('stroke-width', 8)
+	.attr('stroke-linecap', 'round')
+	.attr('fill', 'none')
+	.transition()
+	.duration(1500)
+	.attrTween('stroke-dasharray', function () {
+		var len = this.getTotalLength();
+		return function (t) {
+			return d3.interpolateString('0,' + len, len + ',0')(t);
+		};
+	});
+
+const path3 = svg3
+	.append('path')
+	.attr('d', bezierLine(coordsEmotional))
+	.attr('stroke', 'blue')
+	.attr('stroke-width', 8)
+	.attr('stroke-linecap', 'round')
+	.attr('fill', 'none')
+	.transition()
+	.duration(1500)
+	.attrTween('stroke-dasharray', function () {
+		var len = this.getTotalLength();
+		return function (t) {
+			return d3.interpolateString('0,' + len, len + ',0')(t);
+		};
+	});
+
+
+
+
+
+
+
+
+
 
 let xs = [];
 for (var i = 0; i <= 52; i++) {
@@ -149,7 +174,7 @@ function animate() {
 			})
 			.join(' L');
 
-	document.querySelector('path').setAttribute('d', path);
+	document.querySelector('#sine').setAttribute('d', path);
 
 	t += 1;
 
@@ -158,20 +183,20 @@ function animate() {
 
 animate();
 
-var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".about");
-var closeButton = document.querySelector(".close-button");
+var modal = document.querySelector('.modal');
+var trigger = document.querySelector('.about');
+var closeButton = document.querySelector('.close-button');
 
 function toggleModal() {
-    modal.classList.toggle("show-modal");
+	modal.classList.toggle('show-modal');
 }
 
 function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
-    }
+	if (event.target === modal) {
+		toggleModal();
+	}
 }
 
-trigger.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-window.addEventListener("click", windowOnClick);
+trigger.addEventListener('click', toggleModal);
+closeButton.addEventListener('click', toggleModal);
+window.addEventListener('click', windowOnClick);

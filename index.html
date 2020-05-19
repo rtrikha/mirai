@@ -21,42 +21,110 @@
 					src="assets/logo/black.svg"
 					alt="mirai"
 					id="mirai-logo"
-                />
-                <div class="about">
-                    about
-                </div>
-                <div class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">×</span>
-                        <h1>Hello, I am!</h1>
-                    </div>
-                </div>
+				/>
+				<div class="about">
+					about
+				</div>
+				<div class="modal">
+					<div class="modal-content">
+						<span class="close-button">×</span>
+						<div class="content-modal">
+							<div class="what">
+								<div class="heading">
+									What is mirai?
+								</div>
+								<div class="response">
+									mirai is based on the Biorhythm Theory. It works on
+									the belief that human lives move in predictable
+									separate cycles. The major three cycles are
+									Physical, Emotional and Intellectual. The concept
+									of these cycles start from the day of your birth
+									and they repeat every 58 years, 2 months and about
+									7 days depending on the position of the leap years
+									and length of the month.
+								</div>
+							</div>
+							<div class="how">
+								<div class="heading">
+									How do we calculate it?
+								</div>
+								<div class="response">
+									mirai uses mathematical formulae to compute the
+									prediction. These are sin functions of constants
+									and variables. Drop me an email to understand the
+									maths behind :)
+								</div>
+							</div>
+							<div class="graph">
+								<div class="heading">
+									How to read the graph?
+								</div>
+								<div class="response">
+									Your biorhythm above the horizontal line indicates
+									that your capacity in that area is enhanced; you
+									feel stronger, more alert, more connected, more
+									empathetic. These are times when you are able to do
+									more, be more, enjoy more. When the biorhythm lines
+									are below 0%, your capacity is diminished, and
+									conservative behavior is recommended. Very
+									important are the points at the cross section -
+									when the curves intersect above (positive) or below
+									(negative) axis. The cross-section of all three
+									curves has the strongest meaning and usually
+									announces a particular event or phase (positive or
+									negative) in which you are.
+								</div>
+							</div>
+							<div class="trust">
+								<div class="heading">
+									How trustable is mirai?
+								</div>
+								<div class="response">
+									mirai works on the belief of a study first tried in
+									late 19th century. The output from mirai is mere a
+									implication of this study. We do not state this as
+									your future or any other calculation.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<!-- <div class="minigraphs" id="minigraphs">
-                <div class="intellectual" id="intellectual">
-    
-                </div>
-            </div> -->
+			<div class="minigraphs" id="minigraphs">
+                <div class="intellectual" id="intellectual"></div>
+				<div class="physical" id="physical"></div>
+				<div class="emotional" id="emotional"></div>
+			</div>
 
 			<div class="content">
 				<div class="first-hit">
-                    <div class="megatrox-text">
-                        Your future as a mathematical wave function
-                    </div>
-					<svg id="sample-wave"><path d="M10,10 L50,100 L90,50"></path></svg>
+					<div class="megatrox-text">
+						Your future as a mathematical wave function
+					</div>
+					<svg id="sample-wave">
+						<path id="sine" d="M10,10 L50,100 L90,50"></path>
+					</svg>
 					<div class="input">
 						<label class="title" for="DOB">
 							Enter your date of birth
 						</label>
-						<input
+						<div class="dob-enterer">
+							<input
 							type="text"
 							id="dob"
 							name="dob"
 							placeholder="YYYY / MM / DD"
 						/>
+						<img
+							src="assets/logo/enter.svg"
+							alt="entrer"
+							id= "enter-icon"
+						/>
+						</div>
+						
 					</div>
-                </div>
-                
+				</div>
+
 				<div class="what">
 					<div class="heading">
 						What is mirai?
