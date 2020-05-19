@@ -19,16 +19,18 @@ body {
   background-color: #111111;
   display: block;
   margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .logo-reveal {
-  font-size: 40px;
+  font-size: 58px;
   color: #ffffff;
   font-family: Japan;
   letter-spacing: 2px;
   text-align: center;
-  background-color: #111111;
   padding-top: 44vh;
+  display: block;
   width: 100vw;
   height: 100vh;
 }
@@ -43,9 +45,13 @@ body {
   margin-right: 8vw;
   -webkit-animation-name: reveal-prime;
           animation-name: reveal-prime;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  display: none;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  opacity: 0;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 .prime-holder .header {
@@ -56,7 +62,7 @@ body {
 }
 
 .content {
-  margin-top: 8vh;
+  margin-top: 28vh;
 }
 
 .content .heading {
@@ -65,6 +71,7 @@ body {
   color: #aaaaaa;
   letter-spacing: -0.2px;
   margin-top: 6vh;
+  display: none;
 }
 
 .content .description {
@@ -75,6 +82,7 @@ body {
   line-height: 20px;
   width: 50vw;
   letter-spacing: -0.1px;
+  display: none;
 }
 
 .rhythm {
@@ -84,15 +92,154 @@ body {
 
 @-webkit-keyframes reveal-prime {
   from {
+    -webkit-transform: translateY(2vh);
+            transform: translateY(2vh);
   }
   to {
+    opacity: 1;
   }
 }
 
 @keyframes reveal-prime {
   from {
+    -webkit-transform: translateY(2vh);
+            transform: translateY(2vh);
   }
   to {
+    opacity: 1;
   }
+}
+
+.input {
+  display: -ms-grid;
+  display: grid;
+}
+
+.input .title {
+  color: #aaaaaa;
+  font-family: Space-Mono;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+}
+
+#dob {
+  background-color: transparent;
+  border: transparent;
+  width: 120px;
+  color: #ffffff;
+  margin-top: 1vh;
+  outline: transparent;
+  font-family: Space-Mono;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  caret-color: #fc533e;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#dob :focus {
+  border: none;
+  outline: transparent;
+}
+
+#sample-wave {
+  width: 52px;
+  height: 20px;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+#sample-wave path {
+  stroke: #fc533e;
+  stroke-width: 5px;
+  fill: none;
+}
+
+.megatrox-text {
+  font-size: 24px;
+  font-family: Space-Mono;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.content .first-hit {
+  text-align: center;
+}
+
+.about {
+  color: #555555;
+  cursor: pointer;
+  font-family: Space-Mono;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about:hover {
+  color: #aaaaaa;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+
+.close-button {
+  float: right;
+  width: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  background-color: lightgray;
+}
+
+.close-button:hover {
+  background-color: darkgray;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s, -webkit-transform 0.25s;
 }
 /*# sourceMappingURL=assembly.css.map */

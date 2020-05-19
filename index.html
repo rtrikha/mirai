@@ -1,57 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <meta charset="UTF-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-                <link rel="stylesheet" href="assembly.css" />
-                <script src="style.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link rel="stylesheet" href="assembly.css" />
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+		<script src="https://d3js.org/d3-transition.v1.min.js"></script>
 
-                <title>mirai</title>
-        </head>
-        <body>
-                <div class="logo-reveal" id="logo-reveal"></div>
-                <div class="rhythm">
-                        <canvas id="sin"></canvas>
+		<title>mirai</title>
+	</head>
+	<body>
+		<div class="logo-reveal" id="logo-reveal"></div>
+
+		<div class="prime-holder">
+			<div class="header">
+				<img
+					src="assets/logo/black.svg"
+					alt="mirai"
+					id="mirai-logo"
+                />
+                <div class="about">
+                    about
                 </div>
-
-                <div class="prime-holder">
-                        <div class="header">
-                                <img src="assets/logo/black.svg" alt="mirai" id="mirai-logo" />
-                        </div>
-                        <div class="content">
-                                <div class="what">
-                                        <div class="heading">
-                                                What is mirai?
-                                        </div>
-                                        <div class="description" id="what-content"></div>
-                                </div>
-
-                                <div class="how">
-                                        <div class="heading">
-                                                How do we calculate it?
-                                        </div>
-                                        <div class="description" id="how-content"></div>
-                                </div>
-
-                                <div class="graph">
-                                        <div class="heading">
-                                                How to read the graph?
-                                        </div>
-                                        <div class="description" id="graph"></div>
-                                </div>
-
-                                <div class="trust">
-                                        <div class="heading">
-                                                How trustable is mirai?
-                                        </div>
-                                        <div class="description" id="trust"></div>
-                                </div>
-                        </div>
-                        <div class="footer"></div>
+                <div class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">×</span>
+                        <h1>Hello, I am!</h1>
+                    </div>
                 </div>
-        </body>
-        <script src="calculation.js"></script>
-        <script src="blackbox.js"></script>
-        <script src="style.js"></script>
+			</div>
+			<!-- <div class="minigraphs" id="minigraphs">
+                <div class="intellectual" id="intellectual">
+    
+                </div>
+            </div> -->
+
+			<div class="content">
+				<div class="first-hit">
+                    <div class="megatrox-text">
+                        Your future as a mathematical wave function
+                    </div>
+					<svg id="sample-wave"><path d="M10,10 L50,100 L90,50"></path></svg>
+					<div class="input">
+						<label class="title" for="DOB">
+							Enter your date of birth
+						</label>
+						<input
+							type="text"
+							id="dob"
+							name="dob"
+							placeholder="YYYY / MM / DD"
+						/>
+					</div>
+                </div>
+                
+				<div class="what">
+					<div class="heading">
+						What is mirai?
+					</div>
+					<div class="description" id="what-content"></div>
+				</div>
+
+				<div class="how">
+					<div class="heading">
+						How do we calculate it?
+					</div>
+					<div class="description" id="how-content"></div>
+				</div>
+
+				<div class="graph">
+					<div class="heading">
+						How to read the graph?
+					</div>
+					<div class="description" id="graph"></div>
+				</div>
+
+				<div class="trust">
+					<div class="heading">
+						How trustable is mirai?
+					</div>
+					<div class="description" id="trust"></div>
+				</div>
+			</div>
+			<div class="footer"></div>
+		</div>
+	</body>
+	<script src="calculation.js"></script>
+	<script src="blackbox.js"></script>
+	<script src="style.js"></script>
 </html>

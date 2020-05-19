@@ -118,7 +118,7 @@ var TextScramble = /*#__PURE__*/ (function () {
 })();
 
 const phrases = [
-        "mirai","mirai","mirai"
+        "m","m","m"
 ];
 const el = document.querySelector(".logo-reveal");
 const fx = new TextScramble(el);
@@ -126,7 +126,7 @@ const fx = new TextScramble(el);
 let counter = 0;
 const next = () => {
         fx.setText(phrases[counter]).then(() => {
-                setTimeout(next, 800);
+                setTimeout(next, 700);
         });
         counter = (counter + 1) % phrases.length;
 };
