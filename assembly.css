@@ -23,6 +23,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*
+?	all the boiler plate for the basic declaration
+*/
+/*
+*	forced loading of initial mirai logo uses popLogoReveal()
+*/
 .logo-reveal {
   font-size: 58px;
   color: #ffffff;
@@ -39,6 +45,10 @@ body {
   color: #333333;
 }
 
+/*
+*	prime-holder consists of the entire layout of the rest page has these sections 
+*	header, minigraph and content and footer
+*/
 .prime-holder {
   height: 100%;
   margin-left: 8vw;
@@ -63,53 +73,57 @@ body {
   display: flex;
 }
 
+/*
+*	Defined header with logo and about
+*/
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.about {
+  color: #555555;
+  cursor: pointer;
+  font-family: Space-Mono;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.about:hover {
+  color: #aaaaaa;
+}
+
+/*
+*	Defined content on first hit
+*/
 .content {
   margin-top: 28vh;
+  text-align: center;
 }
 
-.content .heading {
-  font-size: 14px;
+.megatrox-text {
+  font-size: 24px;
   font-family: Space-Mono;
-  color: #aaaaaa;
-  letter-spacing: -0.2px;
-  margin-top: 6vh;
-  display: none;
+  letter-spacing: -0.8px;
+  color: #ffffff;
+  text-align: center;
 }
 
-.content .description {
-  font-size: 12px;
-  margin-top: 8px;
-  font-family: Space-Mono;
-  color: #555555;
-  line-height: 20px;
-  width: 50vw;
-  letter-spacing: -0.1px;
-  display: none;
+#sample-wave {
+  width: 52px;
+  height: 20px;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
 }
 
-.rhythm {
-  width: 400px;
-  height: 400px;
-}
-
-@-webkit-keyframes reveal-prime {
-  from {
-    -webkit-transform: translateY(2vh);
-            transform: translateY(2vh);
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes reveal-prime {
-  from {
-    -webkit-transform: translateY(2vh);
-            transform: translateY(2vh);
-  }
-  to {
-    opacity: 1;
-  }
+#sample-wave path {
+  stroke: #fc533e;
+  stroke-width: 5px;
+  fill: none;
 }
 
 .input {
@@ -145,52 +159,21 @@ body {
   outline: transparent;
 }
 
-#sample-wave {
-  width: 52px;
-  height: 20px;
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-}
-
-#sample-wave path {
-  stroke: #fc533e;
-  stroke-width: 5px;
-  fill: none;
-}
-
-.megatrox-text {
-  font-size: 24px;
-  font-family: Space-Mono;
-  letter-spacing: -0.8px;
-  color: #ffffff;
-  text-align: center;
-}
-
-.content .first-hit {
-  text-align: center;
-}
-
-.about {
-  color: #555555;
+#enter-icon {
+  opacity: 0;
+  margin-left: 1vw;
+  position: absolute;
+  margin-top: 1vh;
   cursor: pointer;
-  font-family: Space-Mono;
-  font-size: 14px;
-  font-weight: 600;
 }
 
-.about:hover {
-  color: #aaaaaa;
+#dob:focus + #enter-icon {
+  opacity: 0.5;
 }
 
-.header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
+/*
+*	Modal
+*/
 .modal {
   position: absolute;
   left: 0;
@@ -240,6 +223,7 @@ body {
           transform: scale(1);
   width: 100%;
   height: 100%;
+  z-index: 999;
   -webkit-transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
@@ -269,18 +253,9 @@ body {
   opacity: 0.8;
 }
 
-#enter-icon {
-  opacity: 0;
-  margin-left: 1vw;
-  position: absolute;
-  margin-top: 1vh;
-  cursor: pointer;
-}
-
-#dob:focus + #enter-icon {
-  opacity: 0.5;
-}
-
+/*
+*	Minigraphs
+*/
 .minigraphs {
   display: inline-block;
   position: relative;
@@ -308,7 +283,25 @@ body {
   display: table-row;
 }
 
-.intellectual svg {
-  position: relative;
+/*
+* all the keyframe animations
+*/
+@-webkit-keyframes reveal-prime {
+  from {
+    -webkit-transform: translateY(2vh);
+            transform: translateY(2vh);
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes reveal-prime {
+  from {
+    -webkit-transform: translateY(2vh);
+            transform: translateY(2vh);
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=assembly.css.map */

@@ -1,22 +1,16 @@
 function popLogoReveal() {
-	document.getElementById('logo-reveal').style.display =
-		'none';
+	document.getElementById('logo-reveal').style.display = 'none';
 	document.getElementById('logo-reveal').style.opacity = '0';
 }
 setTimeout(popLogoReveal, 0000);
 
 var date = document.getElementById('dob');
 
-
 function checkValue(str, max) {
 	if (str.charAt(0) !== '0' || str == '00') {
 		var num = parseInt(str);
 		if (isNaN(num) || num <= 0 || num > max) num = 1;
-		str =
-			num > parseInt(max.toString().charAt(0)) &&
-			num.toString().length == 1
-				? '0' + num
-				: num.toString();
+		str = num > parseInt(max.toString().charAt(0)) && num.toString().length == 1 ? '0' + num : num.toString();
 	}
 	return str;
 }
@@ -24,8 +18,7 @@ function checkValue(str, max) {
 date.addEventListener('input', function (e) {
 	this.type = 'text';
 	var input = this.value;
-	if (/\D\/$/.test(input))
-		input = input.substr(0, input.length - 3);
+	if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
 	var values = input.split('/').map(function (v) {
 		return v.replace(/\D/g, '');
 	});
@@ -39,29 +32,25 @@ date.addEventListener('input', function (e) {
 
 //d3
 
-function loadGraph(){
-
+function loadGraph() {
 	const dataBinder1 = intellectualValues.map((x, i) => {
 		return [i * 20, x];
 	});
-	
+
 	const dataBinder2 = physicalValues.map((x, i) => {
 		return [i * 20, x];
 	});
-	
+
 	const dataBinder3 = emotionalValues.map((x, i) => {
 		return [i * 20, x];
 	});
-	
+
 	var coordsIntellectual = dataBinder1;
 	var coordsPhysical = dataBinder2;
 	var coordsEmotional = dataBinder3;
-	
-	var scale = d3
-		.scaleLinear()
-		.domain([-240, 240])
-		.range([300, 0]);
-	
+
+	var scale = d3.scaleLinear().domain([-240, 240]).range([300, 0]);
+
 	var bezierLine = d3
 		.line()
 		.x(function (d) {
@@ -71,31 +60,23 @@ function loadGraph(){
 			return scale(d[1]);
 		})
 		.curve(d3.curveBasis);
-	
+
 	var svg1 = d3
 		.select('#intellectual')
 		.append('svg')
 		.attr('width', 800)
 		.attr('height', 240)
 		//.attr("viewBox", "0 0 800 240")
-		.attr("preserveAspectRatio", "xMinYMin meet")
-		.classed("svg-content", true)
-		//.attr('transform', 'scale(0.5)')
-	
-	var svg2 = d3
-		.select('#physical')
-		.append('svg')
-		.attr('width', 800)
-		.attr('height', 240)
-		//.attr('transform', 'scale(0.5)')
-	
-	var svg3 = d3
-		.select('#emotional')
-		.append('svg')
-		.attr('width', 800)
-		.attr('height', 240)
-		//.attr('transform', 'scale(0.5)')
-	
+		.attr('preserveAspectRatio', 'xMinYMin meet')
+		.classed('svg-content', true);
+	//.attr('transform', 'scale(0.5)')
+
+	var svg2 = d3.select('#physical').append('svg').attr('width', 800).attr('height', 240);
+	//.attr('transform', 'scale(0.5)')
+
+	var svg3 = d3.select('#emotional').append('svg').attr('width', 800).attr('height', 240);
+	//.attr('transform', 'scale(0.5)')
+
 	const path1 = svg1
 		.append('path')
 		.attr('d', bezierLine(coordsIntellectual))
@@ -111,7 +92,7 @@ function loadGraph(){
 				return d3.interpolateString('0,' + len, len + ',0')(t);
 			};
 		});
-	
+
 	const path2 = svg2
 		.append('path')
 		.attr('d', bezierLine(coordsPhysical))
@@ -127,7 +108,7 @@ function loadGraph(){
 				return d3.interpolateString('0,' + len, len + ',0')(t);
 			};
 		});
-	
+
 	const path3 = svg3
 		.append('path')
 		.attr('d', bezierLine(coordsEmotional))
@@ -143,9 +124,7 @@ function loadGraph(){
 				return d3.interpolateString('0,' + len, len + ',0')(t);
 			};
 		});
-
 }
-
 
 let xs = [];
 for (var i = 0; i <= 52; i++) {
