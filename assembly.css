@@ -27,7 +27,9 @@ body {
 ?	all the boiler plate for the basic declaration
 */
 /*
+
 *	forced loading of initial mirai logo uses popLogoReveal()
+
 */
 .logo-reveal {
   font-size: 58px;
@@ -46,8 +48,10 @@ body {
 }
 
 /*
+
 *	prime-holder consists of the entire layout of the rest page has these sections 
 *	header, minigraph and content and footer
+
 */
 .prime-holder {
   height: 100%;
@@ -74,7 +78,9 @@ body {
 }
 
 /*
+
 *	Defined header with logo and about
+
 */
 .header {
   display: -webkit-box;
@@ -98,7 +104,9 @@ body {
 }
 
 /*
+
 *	Defined content on first hit
+
 */
 .content {
   margin-top: 28vh;
@@ -172,7 +180,9 @@ body {
 }
 
 /*
+
 *	Modal
+
 */
 .modal {
   position: absolute;
@@ -254,7 +264,10 @@ body {
 }
 
 /*
+
 *	Minigraphs
+!	Still have to work on it
+
 */
 .minigraphs {
   display: inline-block;
@@ -284,7 +297,9 @@ body {
 }
 
 /*
+
 * all the keyframe animations
+
 */
 @-webkit-keyframes reveal-prime {
   from {

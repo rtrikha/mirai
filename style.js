@@ -1,8 +1,20 @@
+/*
+
+*	Popping the logoReveal
+
+*/
+
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display = 'none';
 	document.getElementById('logo-reveal').style.opacity = '0';
 }
 setTimeout(popLogoReveal, 0000);
+
+/*
+
+*	DOB input field modulator
+
+*/
 
 var date = document.getElementById('dob');
 
@@ -30,7 +42,11 @@ date.addEventListener('input', function (e) {
 	this.value = output.join('').substr(0, 14);
 });
 
-//d3
+/*
+
+*	D3 graph declaration from here
+
+*/
 
 function loadGraph() {
 	const dataBinder1 = intellectualValues.map((x, i) => {
@@ -61,21 +77,9 @@ function loadGraph() {
 		})
 		.curve(d3.curveBasis);
 
-	var svg1 = d3
-		.select('#intellectual')
-		.append('svg')
-		.attr('width', 800)
-		.attr('height', 240)
-		//.attr("viewBox", "0 0 800 240")
-		.attr('preserveAspectRatio', 'xMinYMin meet')
-		.classed('svg-content', true);
-	//.attr('transform', 'scale(0.5)')
-
+	var svg1 = d3.select('#intellectual').append('svg').attr('width', 800).attr('height', 240);
 	var svg2 = d3.select('#physical').append('svg').attr('width', 800).attr('height', 240);
-	//.attr('transform', 'scale(0.5)')
-
 	var svg3 = d3.select('#emotional').append('svg').attr('width', 800).attr('height', 240);
-	//.attr('transform', 'scale(0.5)')
 
 	const path1 = svg1
 		.append('path')
@@ -126,6 +130,12 @@ function loadGraph() {
 		});
 }
 
+/*
+
+*	Sample wave animation for first-hit
+
+*/
+
 let xs = [];
 for (var i = 0; i <= 52; i++) {
 	xs.push(i);
@@ -156,6 +166,13 @@ function animate() {
 }
 
 animate();
+
+
+/*
+
+*	Modal for about
+
+*/
 
 var modal = document.querySelector('.modal');
 var trigger = document.querySelector('.about');
