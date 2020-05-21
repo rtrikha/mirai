@@ -17,8 +17,10 @@
 
 body {
   background-color: #111111;
-  display: block;
+  display: inline-block;
   margin: 0;
+  width: 100vw;
+  height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -39,8 +41,6 @@ body {
   text-align: center;
   padding-top: 44vh;
   display: block;
-  width: 100vw;
-  height: 100vh;
 }
 
 .black-box-cursor {
@@ -51,12 +51,13 @@ body {
 
 *	prime-holder consists of the entire layout of the rest page has these sections 
 *	header, minigraph and content and footer
+!	here is the animation dealy
 
 */
 .prime-holder {
-  height: 100%;
   margin-left: 8vw;
   margin-right: 8vw;
+  margin-top: 8vh;
   -webkit-animation-name: reveal-prime;
           animation-name: reveal-prime;
   -webkit-animation-delay: 0.5s;
@@ -71,7 +72,6 @@ body {
 }
 
 .prime-holder .header {
-  margin-top: 8vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -318,5 +318,37 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.rhythm {
+  width: 400px;
+  height: 400px;
+}
+
+#GitHub {
+  bottom: auto;
+  width: 100%;
+  color: white;
+  text-align: right;
+}
+
+#GitHub {
+  opacity: 0.5;
+  font-family: Space-Mono;
+  font-size: 12px;
+}
+
+#GitHub :hover {
+  opacity: 1;
+}
+
+#GitHub :link {
+  text-decoration: none;
+  color: #636772;
+}
+
+#GitHub :visited {
+  text-decoration: none;
+  color: #636772;
 }
 /*# sourceMappingURL=assembly.css.map */

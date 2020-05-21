@@ -32,7 +32,6 @@ body {
 	margin: 0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
 }
 
 .logo-reveal {
@@ -61,7 +60,6 @@ body {
 	animation-timing-function: ease-in-out;
 	opacity: 0;
 	animation-fill-mode: forwards;
-	overflow-x: hidden;
 }
 
 .prime-holder .header {

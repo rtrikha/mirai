@@ -3,12 +3,15 @@
 *	Popping the logoReveal
 
 */
+document.getElementById('prime-holder').style.display = 'none';
 
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display = 'none';
 	document.getElementById('logo-reveal').style.opacity = '0';
+	document.getElementById('prime-holder').style.display = 'block';
+
 }
-setTimeout(popLogoReveal, 0000);
+setTimeout(popLogoReveal, 4000);
 
 /*
 
