@@ -11,7 +11,7 @@ function popLogoReveal() {
 	document.getElementById('prime-holder').style.display = 'block';
 
 }
-setTimeout(popLogoReveal, 4000);
+setTimeout(popLogoReveal, 0000);
 
 /*
 
