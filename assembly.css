@@ -270,30 +270,7 @@ body {
 
 */
 .minigraphs {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 0%;
-  vertical-align: top;
-}
-
-.intellectual {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.physical {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.emotional {
-  position: absolute;
-  display: table-row;
+  margin-top: -44vh;
 }
 
 /*

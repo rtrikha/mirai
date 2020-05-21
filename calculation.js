@@ -22,6 +22,7 @@ var intellectualValues = [];
 var physicalValues = [];
 var emotionalValues = [];
 var fetchedDate;
+var compliedDates = [];
 
 function getInput() {
 	fetchedDate = document.getElementById('dob').value;
@@ -29,7 +30,7 @@ function getInput() {
 	fetchedDate = fetchedDate.replace(/\s+/g, '');
 	document.getElementById('first-hit').style.opacity = '0';
 	document.getElementById('first-hit').style.transition = 'opacity 0.3s';
-	document.getElementById('first-hit').style.pointerEvents = "none";
+	document.getElementById('first-hit').style.pointerEvents = 'none';
 
 	getValues();
 	setTimeout(loadGraph, 1000);
@@ -74,9 +75,9 @@ function getValues() {
 	computedDates.push(backDates.reverse());
 	computedDates.push(today);
 	computedDates.push(futureDates);
-	var compliedDates = computedDates.flatMap((x) => x);
+	compliedDates = computedDates.flatMap((x) => x);
 
-	for (i = 0; i <=31; i++) {
+	for (i = 0; i <= 31; i++) {
 		differences[i] = dateDifference(fetchedDate, compliedDates[i]);
 		intellectualValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / intellectualCycle));
 		physicalValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / physicalCycle));
