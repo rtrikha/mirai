@@ -8,6 +8,8 @@
 		<link rel="stylesheet" media="screen and (max-device-width: 520px)" href="mobile-assembly.css" />
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<script src="https://d3js.org/d3-transition.v1.min.js"></script>
+		<script src="https://d3js.org/d3-time.v1.min.js"></script>
+		<script src="https://d3js.org/d3-time-format.v2.min.js"></script>
 		<title>mirai</title>
 	</head>
 	<body>
@@ -121,8 +123,22 @@
 
 				<!-- <div class="GitHub" id="GitHub"><a href="https://github.com/rtrikha/mirai" target="_blank">GitHub</a></div> -->
 			</div>
-
-			<div class="minigraphs" id="minigraphs"></div>
+			<div class="minigraphs" id="minigraphs">
+				<div class="legends" id="legends">
+					<div class="intellectual">
+						<div class="circle"></div>
+						<div class="name">Intellectual</div>
+					</div>
+					<div class="physical">
+						<div class="circle"></div>
+						<div class="name">Physical</div>
+					</div>
+					<div class="emotional">
+						<div class="circle"></div>
+						<div class="name">Emotional</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 	<script src="calculation.js"></script>

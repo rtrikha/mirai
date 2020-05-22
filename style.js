@@ -4,6 +4,7 @@
 
 */
 document.getElementById('prime-holder').style.display = 'none';
+document.getElementById('legends').style.display = 'none';
 
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display = 'none';
@@ -50,113 +51,6 @@ date.addEventListener('input', function (e) {
 
 */
 
-// function loadGraph() {
-// 	const dataBinder1 = intellectualValues.map((x, i) => {
-// 		return [i * 20, x];
-// 	});
-
-// 	const dataBinder2 = physicalValues.map((x, i) => {
-// 		return [i * 20, x];
-// 	});
-
-// 	const dataBinder3 = emotionalValues.map((x, i) => {
-// 		return [i * 20, x];
-// 	});
-
-// 	var coordsIntellectual = dataBinder1;
-// 	var coordsPhysical = dataBinder2;
-// 	var coordsEmotional = dataBinder3;
-
-// 	var scale = d3.scaleLinear().domain([-240, 240]).range([300, 0]);
-
-// 	var bezierLine = d3
-// 		.line()
-// 		.x(function (d) {
-// 			return d[0];
-// 		})
-// 		.y(function (d) {
-// 			return scale(d[1]);
-// 		})
-// 		.curve(d3.curveBasis);
-
-// 	var svg1 = d3
-// 		.select('#intellectual')
-// 		.append('svg')
-// 		.attr('id', 'int')
-// 		.attr('align', 'center')
-// 		.attr('width', '80vw')
-// 		.attr('height', '24vh')
-// 		.attr('viewBox', '0 0 220 220')
-// 		.attr('preserveAspectRatio', 'xMinYMin meet');
-
-// 	// var svg2 = d3.select('#physical').append('svg').attr('width', 800).attr('height', 240);
-// 	// var svg3 = d3.select('#emotional').append('svg').attr('width', 800).attr('height', 240);
-// 	var tooltip = d3
-// 		.select('body')
-// 		.append('div')
-// 		.style('position', 'absolute')
-// 		.style('z-index', '9999')
-// 		.style('visibility', 'hidden')
-// 		.text('a simple tooltip');
-
-// 	const path1 = svg1
-// 		.append('path')
-// 		.attr('d', bezierLine(coordsIntellectual))
-// 		.on('mouseover', function () {
-// 			return tooltip.style('visibility', 'visible');
-// 		})
-// 		.on('mousemove', function () {
-// 			return tooltip.style('top', event.pageY - 10 + 'px').style('left', event.pageX + 10 + 'px');
-// 		})
-// 		.on('mouseout', function () {
-// 			return tooltip.style('visibility', 'hidden');
-// 		})
-// 		.attr('stroke', '#72DEC2')
-// 		.attr('stroke-width', 8)
-// 		.attr('stroke-linecap', 'round')
-// 		.attr('fill', 'none')
-// 		.transition()
-// 		.duration(1500)
-// 		.attrTween('stroke-dasharray', function () {
-// 			var len = this.getTotalLength();
-// 			return function (t) {
-// 				return d3.interpolateString('0,' + len, len + ',0')(t);
-// 			};
-// 		});
-
-// 	// const path2 = svg2
-// 	// 	.append('path')
-// 	// 	.attr('d', bezierLine(coordsPhysical))
-// 	// 	.attr('stroke', '#FFB545')
-// 	// 	.attr('stroke-width', 8)
-// 	// 	.attr('stroke-linecap', 'round')
-// 	// 	.attr('fill', 'none')
-// 	// 	.transition()
-// 	// 	.duration(1500)
-// 	// 	.attrTween('stroke-dasharray', function () {
-// 	// 		var len = this.getTotalLength();
-// 	// 		return function (t) {
-// 	// 			return d3.interpolateString('0,' + len, len + ',0')(t);
-// 	// 		};
-// 	// 	});
-
-// 	// const path3 = svg3
-// 	// 	.append('path')
-// 	// 	.attr('d', bezierLine(coordsEmotional))
-// 	// 	.attr('stroke', 'white')
-// 	// 	.attr('stroke-width', 8)
-// 	// 	.attr('stroke-linecap', 'round')
-// 	// 	.attr('fill', 'none')
-// 	// 	.transition()
-// 	// 	.duration(1500)
-// 	// 	.attrTween('stroke-dasharray', function () {
-// 	// 		var len = this.getTotalLength();
-// 	// 		return function (t) {
-// 	// 			return d3.interpolateString('0,' + len, len + ',0')(t);
-// 	// 		};
-// 	// 	});
-// }
-
 function loadGraph() {
 	function responsivefy(svg) {
 		var container = d3.select(svg.node().parentNode),
@@ -178,31 +72,23 @@ function loadGraph() {
 		}
 	}
 
-	const coordsIntellectual = intellectualValues.map((x, i) => {
-		return [i * 20, x];
-	});
+	let parseDate = d3.timeParse('%Y-%m-%d');
 
-	const coordsPhysical = physicalValues.map((x, i) => {
-		return [i * 20, x];
-	});
+	var x = d3.scaleTime().range([0, 600]);
+	var y = d3.scaleLinear().range([100, 10]);
 
-	const coordsEmotional = emotionalValues.map((x, i) => {
-		return [i * 20, x];
-	});
+	var xAxis = d3.axisBottom().scale(x);
+	var yAxis = d3.axisLeft().scale(y);
 
-	var scale = d3.scaleLinear().domain([-100, 100]).range([0, 100]).nice();
-
-	//var x = d3.scaleLinear().domain([0, 30]).range([0, 600]).nice();
-
-	var bezierLine = d3
+	var line = d3
 		.line()
 		.x(function (d) {
-			return d[0];
+			return x(d.date);
 		})
 		.y(function (d) {
-			return scale(d[1]);
+			return y(d.close);
 		})
-		.curve(d3.curveCardinal);
+		.curve(d3.curveBasis);
 
 	var svg = d3
 		.select('#minigraphs')
@@ -213,25 +99,49 @@ function loadGraph() {
 		.append('g')
 		.attr('stroke-linecap', 'round')
 		.attr('stroke-width', 8)
-		.attr('fill', 'none')
-		.attr('id', 'test');
-	// .append('g')
-	// .attr('color',"white")
-	// .attr('width', '60vw')
-	// .attr('transform', 'translate(0,100)')
-	// .call(d3.axisBottom(x));
+		.attr('fill', 'none');
 
 	setTimeout(function () {
-		// var rect = document.getElementById("test").getBoundingClientRect();
-		// console.log(rect.width);
-		//console.log(document.getElementById("test").offsetWidth);
 		svg.attr('transform', 'translate(120,100)');
 	}, 0);
 
+	var dataIntellectual = coordsIntellectual.map(function (d) {
+		return {
+			date: parseDate(d[0]),
+			close: d[1],
+		};
+	});
+
+	var dataPhysical = coordsPhysical.map(function (d) {
+		return {
+			date: parseDate(d[0]),
+			close: d[1],
+		};
+	});
+
+	var dataEmotional = coordsEmotional.map(function (d) {
+		return {
+			date: parseDate(d[0]),
+			close: d[1],
+		};
+	});
+
+	x.domain(
+		d3.extent(dataIntellectual, function (d) {
+			return d.date;
+		})
+	);
+	y.domain(
+		d3.extent(dataIntellectual, function (d) {
+			return d.close;
+		})
+	);
+
 	svg
 		.append('path')
-		.attr('class', 'intllectual')
-		.attr('d', bezierLine(coordsIntellectual))
+		.attr('class', 'intellectual')
+		.datum(dataIntellectual)
+		.attr('d', line)
 		.transition()
 		.attr('stroke', '#72DEC2')
 		.duration(1500)
@@ -245,7 +155,8 @@ function loadGraph() {
 	svg
 		.append('path')
 		.attr('class', 'physical')
-		.attr('d', bezierLine(coordsPhysical))
+		.datum(dataPhysical)
+		.attr('d', line)
 		.transition()
 		.delay(150)
 		.attr('stroke', 'white')
@@ -260,7 +171,8 @@ function loadGraph() {
 	svg
 		.append('path')
 		.attr('class', 'emotional')
-		.attr('d', bezierLine(coordsEmotional))
+		.datum(dataEmotional)
+		.attr('d', line)
 		.transition()
 		.delay(250)
 		.attr('stroke', '#FFB545')
@@ -271,15 +183,9 @@ function loadGraph() {
 				return d3.interpolateString('0,' + len, len + ',0')(t);
 			};
 		});
-
-	var focus = svg.append('g').style('display', 'none');
-
-	focus.append("circle")
-        .attr("class", "y")                               
-        .style("fill", "none")                            
-        .style("stroke", "blue")                          
-        .attr("r", 4);     
 }
+
+//http://jsfiddle.net/jaimem/T546B/
 
 /*
 

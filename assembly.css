@@ -328,4 +328,93 @@ body {
   text-decoration: none;
   color: #636772;
 }
+
+#legends {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 0;
+  width: 100%;
+  right: 0;
+  margin-bottom: 32vh;
+}
+
+.legends > div {
+  margin: 24px;
+}
+
+.legends .name {
+  color: white;
+  font-family: Space-Mono;
+  font-size: 14px;
+  letter-spacing: -0.6px;
+}
+
+.intellectual .circle {
+  background: #72dec2;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.7vw;
+}
+
+.physical .circle {
+  background: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.7vw;
+}
+
+.emotional .circle {
+  background: #ffb545;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.7vw;
+}
+
+.intellectual {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.physical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.emotional {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
 /*# sourceMappingURL=assembly.css.map */

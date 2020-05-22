@@ -23,6 +23,10 @@ var physicalValues = [];
 var emotionalValues = [];
 var fetchedDate;
 var compliedDates = [];
+var results;
+var coordsIntellectual = [];
+var coordsPhysical = [];
+var coordsEmotional = [];
 
 function getInput() {
 	fetchedDate = document.getElementById('dob').value;
@@ -31,6 +35,7 @@ function getInput() {
 	document.getElementById('first-hit').style.opacity = '0';
 	document.getElementById('first-hit').style.transition = 'opacity 0.3s';
 	document.getElementById('first-hit').style.pointerEvents = 'none';
+	document.getElementById('legends').style.display = 'flex';
 
 	getValues();
 	setTimeout(loadGraph, 1000);
@@ -77,6 +82,8 @@ function getValues() {
 	computedDates.push(futureDates);
 	compliedDates = computedDates.flatMap((x) => x);
 
+	results = compliedDates.map((date) => new Date(date));
+
 	for (i = 0; i <= 31; i++) {
 		differences[i] = dateDifference(fetchedDate, compliedDates[i]);
 		intellectualValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / intellectualCycle));
@@ -84,7 +91,21 @@ function getValues() {
 		emotionalValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / emotionalCycle));
 	}
 
-	console.log(intellectualValues[0]);
-	console.log(physicalValues[0]);
-	console.log(emotionalValues[0]);
+	let parseDate = d3.timeFormat('%Y-%m-%d');
+
+	for (i = 0; i <= 31; i++) {
+		results[i] = parseDate(results[i]);
+	}
+
+	// coordsIntellectual = intellectualValues.map((x, i) => {
+	// 	return [results[i], x];
+	// });
+
+	for (i = 0; i < 31; i++) {
+		coordsIntellectual[i] = [compliedDates[i], intellectualValues[i]];
+		coordsPhysical[i] = [compliedDates[i], physicalValues[i]];
+		coordsEmotional[i] = [compliedDates[i], emotionalValues[i]];
+	}
+	console.log(coordsIntellectual[0]);
+	//results = [{"date":date,"value":x},{"date:date","value":x}]
 }
