@@ -228,8 +228,9 @@ body {
 .show-modal {
   opacity: 1;
   visibility: visible;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  position: fixed;
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
   width: 100%;
   height: 100%;
   z-index: 999;
@@ -269,9 +270,10 @@ body {
 
 */
 .minigraphs {
-  margin-top: -44vh;
-  width: 60%;
+  margin-top: -32vh;
   height: 200px;
+  margin-left: 10vw;
+  margin-right: 10vw;
 }
 
 /*
@@ -330,94 +332,16 @@ body {
   color: #636772;
 }
 
-#legends {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  bottom: 0;
-  width: 100%;
-  right: 0;
-  margin-bottom: 32vh;
-}
-
-.legends > div {
-  margin: 24px;
-}
-
-.legends .name {
-  color: white;
-  font-family: Space-Mono;
-  font-size: 14px;
-  letter-spacing: -0.6px;
-}
-
-.intellectual .circle {
-  background: #72dec2;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.7vw;
-}
-
-.physical .circle {
-  background: white;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.7vw;
-}
-
-.emotional .circle {
-  background: #ffb545;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.7vw;
-}
-
-.intellectual {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.physical {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.emotional {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .go-back {
   z-index: 9999999;
   position: absolute;
-  bottom: 0;
   left: 50%;
-  margin-bottom: 16vh;
+  margin-top: 24vh;
 }
 
 .text-back {
   z-index: 99999;
   position: relative;
-  left: -50%;
   color: #555555;
   position: relative;
   font-family: Space-Mono;
@@ -430,14 +354,11 @@ body {
   color: white;
 }
 
-.info {
-  color: white;
-  font-size: 14px;
-  font-family: Space-Mono;
-  margin: 0 auto;
-  text-align: center;
-}
+/*
 
+* line-chart
+
+*/
 .apexcharts-tooltip.apexcharts-theme-dark {
   background: #0d0d0d !important;
   -webkit-box-shadow: none;
@@ -450,5 +371,36 @@ body {
 
 #SvgjsLine1007 {
   stroke: #333333;
+}
+
+/*
+
+* radial-charts
+
+*/
+.radial-chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 60%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  padding: 0;
+  margin: auto;
+}
+
+.apexcharts-radialbar-track.apexcharts-track {
+  opacity: 0.05;
+}
+
+.radial-chart-child {
+  width: 100%;
+  -ms-flex-preferred-size: 33%;
+      flex-basis: 33%;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 /*# sourceMappingURL=assembly.css.map */
