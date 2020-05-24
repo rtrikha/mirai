@@ -4,7 +4,7 @@
 
 */
 document.getElementById('prime-holder').style.display = 'none';
-document.getElementById('legends').style.display = 'none';
+document.getElementById('goBack').style.display = 'none';
 
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display = 'none';
@@ -74,7 +74,7 @@ function loadGraph() {
 
 	let parseDate = d3.timeParse('%Y-%m-%d');
 
-	var x = d3.scaleTime().range([0, 600]);
+	var x = d3.scaleTime().range([0, 400]);
 	var y = d3.scaleLinear().range([100, 10]);
 
 	var xAxis = d3.axisBottom().scale(x);
@@ -86,43 +86,47 @@ function loadGraph() {
 			return x(d.date);
 		})
 		.y(function (d) {
-			return y(d.close);
+			return y(d.value);
 		})
 		.curve(d3.curveBasis);
 
 	var svg = d3
 		.select('#minigraphs')
 		.append('svg')
-		.attr('width', '60vw')
-		.attr('height', '300')
+		.attr('id', 'delete')
+		.attr('width', '40vw')
+		.attr('height', '200')
 		.call(responsivefy)
 		.append('g')
 		.attr('stroke-linecap', 'round')
-		.attr('stroke-width', 8)
+		.attr('stroke-width', 4)
 		.attr('fill', 'none');
 
 	setTimeout(function () {
-		svg.attr('transform', 'translate(120,100)');
+		var centroid = document.getElementById('minigraphs').getBoundingClientRect().width;
+		centroid = centroid * 0.07;
+		console.log(centroid);
+		svg.attr('transform', 'translate(' + centroid + ',40)');
 	}, 0);
 
 	var dataIntellectual = coordsIntellectual.map(function (d) {
 		return {
 			date: parseDate(d[0]),
-			close: d[1],
+			value: d[1],
 		};
 	});
 
 	var dataPhysical = coordsPhysical.map(function (d) {
 		return {
 			date: parseDate(d[0]),
-			close: d[1],
+			value: d[1],
 		};
 	});
 
 	var dataEmotional = coordsEmotional.map(function (d) {
 		return {
 			date: parseDate(d[0]),
-			close: d[1],
+			value: d[1],
 		};
 	});
 
@@ -133,7 +137,7 @@ function loadGraph() {
 	);
 	y.domain(
 		d3.extent(dataIntellectual, function (d) {
-			return d.close;
+			return d.value;
 		})
 	);
 

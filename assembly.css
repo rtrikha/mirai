@@ -27,8 +27,6 @@ body {
 
 /*
 ?	all the boiler plate for the basic declaration
-*/
-/*
 
 *	forced loading of initial mirai logo uses popLogoReveal()
 
@@ -193,8 +191,9 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   opacity: 0;
   visibility: hidden;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  z-index: 99999990;
   -webkit-transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, -webkit-transform 0.25s;
   transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
@@ -271,6 +270,8 @@ body {
 */
 .minigraphs {
   margin-top: -44vh;
+  width: 60%;
+  height: 200px;
 }
 
 /*
@@ -405,16 +406,49 @@ body {
           align-items: center;
 }
 
-div.tooltip {
+.go-back {
+  z-index: 9999999;
   position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-bottom: 16vh;
+}
+
+.text-back {
+  z-index: 99999;
+  position: relative;
+  left: -50%;
+  color: #555555;
+  position: relative;
+  font-family: Space-Mono;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.text-back:hover {
+  color: white;
+}
+
+.info {
+  color: white;
+  font-size: 14px;
+  font-family: Space-Mono;
+  margin: 0 auto;
   text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  border: 0px;
-  border-radius: 8px;
-  pointer-events: none;
+}
+
+.apexcharts-tooltip.apexcharts-theme-dark {
+  background: #0d0d0d !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.apexcharts-tooltip-title {
+  border-bottom: none !important;
+}
+
+#SvgjsLine1007 {
+  stroke: #333333;
 }
 /*# sourceMappingURL=assembly.css.map */

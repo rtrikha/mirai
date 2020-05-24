@@ -5,15 +5,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assembly.css" />
 		<!-- <link rel="stylesheet" media="screen and (max-device-width: 720px)" href="tab-assembly.css" /> -->
-		<link rel="stylesheet" media="screen and (max-device-width: 520px)" href="mobile-assembly.css" />
+		<!-- <link rel="stylesheet" media="screen and (max-device-width: 520px)" href="mobile-assembly.css" /> -->
 		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<script src="https://d3js.org/d3-transition.v1.min.js"></script>
 		<script src="https://d3js.org/d3-time.v1.min.js"></script>
 		<script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+		<link rel="stylesheet" href="dist/apexcharts.css">
+		<script src="dist/apexcharts.min.js"></script>
 		<title>mirai</title>
 	</head>
 	<body>
 		<div class="logo-reveal" id="logo-reveal"></div>
+
+		<div id="chart"></div>
 
 		<div class="prime-holder" id="prime-holder">
 			<div class="header">
@@ -123,22 +127,15 @@
 
 				<!-- <div class="GitHub" id="GitHub"><a href="https://github.com/rtrikha/mirai" target="_blank">GitHub</a></div> -->
 			</div>
-			<div class="minigraphs" id="minigraphs">
-				<div class="legends" id="legends">
-					<div class="intellectual">
-						<div class="circle"></div>
-						<div class="name">Intellectual</div>
-					</div>
-					<div class="physical">
-						<div class="circle"></div>
-						<div class="name">Physical</div>
-					</div>
-					<div class="emotional">
-						<div class="circle"></div>
-						<div class="name">Emotional</div>
-					</div>
+
+			<div class="go-back" id="goBack" onclick="goBack()">
+				<div class="text-back">
+					Go-back
 				</div>
+				</div>
+			<div class="minigraphs" id="minigraphs">
 			</div>
+			<!-- <div class="info">Your biorhythm for next 30 days</div> -->
 		</div>
 	</body>
 	<script src="calculation.js"></script>

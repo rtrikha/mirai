@@ -28,17 +28,52 @@ var coordsIntellectual = [];
 var coordsPhysical = [];
 var coordsEmotional = [];
 
+function goBack() {
+	console.log('back');
+	document.getElementById('minigraphs').style.opacity = '0';
+	document.getElementById('minigraphs').style.transition = 'opacity 0.3s';
+	document.getElementById('minigraphs').style.pointerEvents = 'none';
+	document.getElementById('delete').remove();
+	document.getElementById('dob').value = '';
+
+	//document.getElementById('goBack').style.display="none";
+	setTimeout(function () {
+		document.getElementById('goBack').style.opacity = '0';
+		document.getElementById('goBack').style.transition = 'opacity 0.1s';
+		document.getElementById('goBack').style.pointerEvents = 'none';
+	}, 300);
+
+	setTimeout(function () {
+		document.getElementById('first-hit').style.opacity = '1';
+		document.getElementById('first-hit').style.transition = 'opacity 0.3s';
+		document.getElementById('first-hit').style.pointerEvents = 'all';
+	}, 1000);
+}
+
 function getInput() {
 	fetchedDate = document.getElementById('dob').value;
 	fetchedDate = fetchedDate.split('/').reverse('').join('-');
 	fetchedDate = fetchedDate.replace(/\s+/g, '');
+	//document.getElementById('first-hit')
 	document.getElementById('first-hit').style.opacity = '0';
 	document.getElementById('first-hit').style.transition = 'opacity 0.3s';
 	document.getElementById('first-hit').style.pointerEvents = 'none';
-	document.getElementById('legends').style.display = 'flex';
+
+	var chart = new ApexCharts(document.querySelector('#minigraphs'), options);
+	chart.render();
+
+	setTimeout(function () {
+		//document.getElementById('legends').style.display = 'flex';
+		document.getElementById('minigraphs').style.opacity = '1';
+		document.getElementById('minigraphs').style.transition = 'opacity 0.3s';
+		document.getElementById('minigraphs').style.pointerEvents = 'all';
+		document.getElementById('goBack').style.opacity = '1';
+		document.getElementById('goBack').style.display = 'flex';
+		document.getElementById('goBack').style.pointerEvents = 'all';
+	}, 1000);
 
 	getValues();
-	setTimeout(loadGraph, 1000);
+	//setTimeout(loadGraph, 1000);
 }
 
 function search(ele) {
@@ -97,15 +132,84 @@ function getValues() {
 		results[i] = parseDate(results[i]);
 	}
 
-	// coordsIntellectual = intellectualValues.map((x, i) => {
-	// 	return [results[i], x];
-	// });
-
 	for (i = 0; i < 31; i++) {
 		coordsIntellectual[i] = [compliedDates[i], intellectualValues[i]];
 		coordsPhysical[i] = [compliedDates[i], physicalValues[i]];
 		coordsEmotional[i] = [compliedDates[i], emotionalValues[i]];
 	}
 	console.log(coordsIntellectual[0]);
-	//results = [{"date":date,"value":x},{"date:date","value":x}]
 }
+
+var dataIntellectual = coordsIntellectual.map(function (d) {
+	return {
+		date: parseDate(d[0]),
+		value: d[1],
+	};
+});
+
+var options = {
+	colors: ['#72DEC2', '#ffffff', '#FFB545'],
+	series: [
+		{
+			type: 'line',
+			name: 'Intellectual',
+			data: [
+				{x: '06/05/2014', y: 54},
+				{x: '05/08/2014', y: 17},
+			],
+		},
+		{
+			type: 'line',
+			name: 'Physical',
+			data: [
+				{x: '06/05/2014', y: 20},
+				{x: '05/08/2014', y: 87},
+			],
+		},
+		{
+			type: 'line',
+			name: 'Emotional',
+			data: [
+				{x: '06/05/2014', y: 10},
+				{x: '05/08/2014', y: 67},
+			],
+		},
+	],
+	chart: {
+		type: 'line',
+		sparkline: {
+			enabled: true,
+		},
+	},
+	stroke: {
+		curve: 'smooth',
+	},
+	fill: {
+		opacity: 1,
+	},
+	yaxis: {
+		borderColor: '#000',
+		min: 0,
+	},
+	stroke: {
+		show: true,
+		curve: 'smooth',
+		lineCap: 'round',
+		width: 6,
+		dashArray: 0,
+	},
+
+	tooltip: {
+		enabled: true,
+		theme: 'dark',
+	},
+	animations: {
+		enabled: false,
+		easing: 'easeinout',
+		speed: 8000,
+		animateGradually: {
+			enabled: true,
+			delay: 1250,
+		},
+	},
+};
