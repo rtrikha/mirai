@@ -4,7 +4,7 @@
 
 */
 document.getElementById('prime-holder').style.display = 'none';
-document.getElementById('goBack').style.display = 'none';
+document.getElementById('response').style.display = 'none';
 
 function popLogoReveal() {
 	document.getElementById('logo-reveal').style.display = 'none';
@@ -13,6 +13,13 @@ function popLogoReveal() {
 	document.getElementById('prime-holder').style.display = 'block';
 }
 setTimeout(popLogoReveal, 0000);
+
+setTimeout(function () {
+	document.getElementById('footer').style.opacity = '1';
+	document.getElementById('footer').style.transition = 'opacity 0.3s';
+	
+	document.getElementById('footer').style.display = 'block';
+}, 1500);
 
 /*
 
@@ -51,144 +58,6 @@ date.addEventListener('input', function (e) {
 *	D3 graph declaration from here
 
 */
-
-function loadGraph() {
-	function responsivefy(svg) {
-		var container = d3.select(svg.node().parentNode),
-			width = parseInt(svg.style('width')),
-			height = parseInt(svg.style('height')),
-			aspect = width / height;
-
-		svg
-			.attr('viewBox', '0 0 ' + width + ' ' + height)
-			.attr('perserveAspectRatio', 'xMinYMid')
-			.call(resize);
-
-		d3.select(window).on('resize.' + container.attr('id'), resize);
-
-		function resize() {
-			var targetWidth = parseInt(container.style('width'));
-			svg.attr('width', targetWidth);
-			svg.attr('height', Math.round(targetWidth / aspect));
-		}
-	}
-
-	let parseDate = d3.timeParse('%Y-%m-%d');
-
-	var x = d3.scaleTime().range([0, 400]);
-	var y = d3.scaleLinear().range([100, 10]);
-
-	var xAxis = d3.axisBottom().scale(x);
-	var yAxis = d3.axisLeft().scale(y);
-
-	var line = d3
-		.line()
-		.x(function (d) {
-			return x(d.date);
-		})
-		.y(function (d) {
-			return y(d.value);
-		})
-		.curve(d3.curveBasis);
-
-	var svg = d3
-		.select('#minigraphs')
-		.append('svg')
-		.attr('id', 'delete')
-		.attr('width', '40vw')
-		.attr('height', '200')
-		.call(responsivefy)
-		.append('g')
-		.attr('stroke-linecap', 'round')
-		.attr('stroke-width', 4)
-		.attr('fill', 'none');
-
-	setTimeout(function () {
-		var centroid = document.getElementById('minigraphs').getBoundingClientRect().width;
-		centroid = centroid * 0.07;
-		console.log(centroid);
-		svg.attr('transform', 'translate(' + centroid + ',40)');
-	}, 0);
-
-	var dataIntellectual = coordsIntellectual.map(function (d) {
-		return {
-			date: parseDate(d[0]),
-			value: d[1],
-		};
-	});
-
-	var dataPhysical = coordsPhysical.map(function (d) {
-		return {
-			date: parseDate(d[0]),
-			value: d[1],
-		};
-	});
-
-	var dataEmotional = coordsEmotional.map(function (d) {
-		return {
-			date: parseDate(d[0]),
-			value: d[1],
-		};
-	});
-
-	x.domain(
-		d3.extent(dataIntellectual, function (d) {
-			return d.date;
-		})
-	);
-	y.domain(
-		d3.extent(dataIntellectual, function (d) {
-			return d.value;
-		})
-	);
-
-	svg
-		.append('path')
-		.attr('class', 'intellectual')
-		.datum(dataIntellectual)
-		.attr('d', line)
-		.transition()
-		.attr('stroke', '#72DEC2')
-		.duration(1500)
-		.attrTween('stroke-dasharray', function () {
-			var len = this.getTotalLength();
-			return function (t) {
-				return d3.interpolateString('0,' + len, len + ',0')(t);
-			};
-		});
-
-	svg
-		.append('path')
-		.attr('class', 'physical')
-		.datum(dataPhysical)
-		.attr('d', line)
-		.transition()
-		.delay(150)
-		.attr('stroke', 'white')
-		.duration(1500)
-		.attrTween('stroke-dasharray', function () {
-			var len = this.getTotalLength();
-			return function (t) {
-				return d3.interpolateString('0,' + len, len + ',0')(t);
-			};
-		});
-
-	svg
-		.append('path')
-		.attr('class', 'emotional')
-		.datum(dataEmotional)
-		.attr('d', line)
-		.transition()
-		.delay(250)
-		.attr('stroke', '#FFB545')
-		.duration(1500)
-		.attrTween('stroke-dasharray', function () {
-			var len = this.getTotalLength();
-			return function (t) {
-				return d3.interpolateString('0,' + len, len + ',0')(t);
-			};
-		});
-}
 
 //http://jsfiddle.net/jaimem/T546B/
 
@@ -252,3 +121,8 @@ function windowOnClick(event) {
 trigger.addEventListener('click', toggleModal);
 closeButton.addEventListener('click', toggleModal);
 window.addEventListener('click', windowOnClick);
+
+//
+
+var dateToday = Date.parse(Date.today()).toString('dddd dd MMMM');
+document.getElementById('chart-title-today').innerHTML = `Biorhythm for Today, ${dateToday}`;

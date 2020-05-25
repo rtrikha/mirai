@@ -12,6 +12,7 @@
 		<script src="https://d3js.org/d3-time-format.v2.min.js"></script>
 		<link rel="stylesheet" href="dist/apexcharts.css" />
 		<script src="dist/apexcharts.min.js"></script>
+		<script type="text/javascript" src="dist/date.js"></script>
 		<title>mirai</title>
 	</head>
 	<body>
@@ -19,7 +20,7 @@
 
 		<div class="prime-holder" id="prime-holder">
 			<div class="header">
-				<img src="assets/logo/mirai-white-40X40.svg" alt="mirai" id="mirai-logo" />
+				<img src="assets/logo/mirai-white-40X40.svg" alt="mirai" id="mirai-logo" onclick="goBack()" />
 				<div class="about">
 					about
 				</div>
@@ -31,7 +32,7 @@
 								<div class="heading">
 									What is mirai?
 								</div>
-								<div class="response">
+								<div class="response-modal">
 									mirai is based on the Biorhythm Theory. It works on the belief that human lives move in predictable separate cycles. The
 									major three cycles are Physical, Emotional and Intellectual. The concept of these cycles start from the day of your
 									birth and they repeat every 58 years, 2 months and about 7 days depending on the position of the leap years and length
@@ -42,7 +43,7 @@
 								<div class="heading">
 									How do we calculate it?
 								</div>
-								<div class="response">
+								<div class="response-modal">
 									mirai uses mathematical formulae to compute the prediction. These are sin functions of constants and variables. Drop me
 									an email to understand the maths behind :)
 								</div>
@@ -51,7 +52,7 @@
 								<div class="heading">
 									How to read the graph?
 								</div>
-								<div class="response">
+								<div class="response-modal">
 									Your biorhythm above the horizontal line indicates that your capacity in that area is enhanced; you feel stronger, more
 									alert, more connected, more empathetic. These are times when you are able to do more, be more, enjoy more. When the
 									biorhythm lines are below 0%, your capacity is diminished, and conservative behavior is recommended. Very important are
@@ -64,7 +65,7 @@
 								<div class="heading">
 									How trustable is mirai?
 								</div>
-								<div class="response">
+								<div class="response-modal">
 									mirai works on the belief of a study first tried in late 19th century. The output from mirai is mere a implication of
 									this study. We do not state this as your future or any other calculation.
 								</div>
@@ -74,7 +75,7 @@
 				</div>
 			</div>
 
-			<div class="content">
+			<div class="content" id="content">
 				<div class="first-hit" id="first-hit">
 					<div class="megatrox-text">
 						Your future as a mathematical wave function
@@ -92,52 +93,63 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<div class="modal">
-					<div class="what">
-						<div class="heading">
-							What is mirai?
-						</div>
-						<div class="description" id="what-content"></div>
+			<div class="modal">
+				<div class="what">
+					<div class="heading">
+						What is mirai?
 					</div>
+					<div class="description" id="what-content"></div>
+				</div>
 
-					<div class="how">
-						<div class="heading">
-							How do we calculate it?
-						</div>
-						<div class="description" id="how-content"></div>
+				<div class="how">
+					<div class="heading">
+						How do we calculate it?
 					</div>
+					<div class="description" id="how-content"></div>
+				</div>
 
-					<div class="graph">
-						<div class="heading">
-							How to read the graph?
-						</div>
-						<div class="description" id="graph"></div>
+				<div class="graph">
+					<div class="heading">
+						How to read the graph?
 					</div>
+					<div class="description" id="graph"></div>
+				</div>
 
-					<div class="trust">
-						<div class="heading">
-							How trustable is mirai?
-						</div>
-						<div class="description" id="trust"></div>
+				<div class="trust">
+					<div class="heading">
+						How trustable is mirai?
+					</div>
+					<div class="description" id="trust"></div>
+				</div>
+			</div>
+
+			<div class="response" id="response">
+				<div class="radial-chart-wrapper" id="radial-chart-wrapper">
+					<div class="chart-title" id="chart-title-today">
+						Today
+					</div>
+					<div class="radial-chart" id="radial-chart">
+						<div class="radial-chart-child" id="radial-chart-intellectual"></div>
+						<div class="radial-chart-child" id="radial-chart-physical"></div>
+						<div class="radial-chart-child" id="radial-chart-emotional"></div>
 					</div>
 				</div>
 
-				<!-- <div class="GitHub" id="GitHub"><a href="https://github.com/rtrikha/mirai" target="_blank">GitHub</a></div> -->
-			</div>
-
-			<div class="go-back" id="goBack" onclick="goBack()">
-				<div class="text-back">
-					Go-back
+				<div class="line-chart-wrapper">
+					<div class="chart-title" id="chart-title-month">
+						Biorhythm for next 30 days
+					</div>
+					<div class="line-chart" id="line-chart"></div>
 				</div>
 			</div>
-			<div class="radial-chart" id="radial-chart">
-				<div class="radial-chart-child" id="radial-chart-intellectual"></div>
-				<div class="radial-chart-child" id="radial-chart-physical"></div>
-				<div class="radial-chart-child" id="radial-chart-emotional"></div>
+
+			<div class="footer" id="footer">
+				<div class="gitHub">
+					<a href="https://github.com/rtrikha/mirai" id="gitLink" target="_blank">GitHub</a>
+				</div>
 			</div>
-			<div class="line-chart" id="line-chart"></div>
-			<!-- <div class="info">Your biorhythm for next 30 days</div> -->
 		</div>
 	</body>
 	<script src="calculation.js"></script>

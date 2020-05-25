@@ -21,33 +21,48 @@ var computedDates = [];
 var intellectualValues = [];
 var physicalValues = [];
 var emotionalValues = [];
-var fetchedDate;
 var compliedDates = [];
-var results;
 var coordsIntellectual = [];
 var coordsPhysical = [];
 var coordsEmotional = [];
+var dataIntellectual = [];
+var dataPhysical = [];
+var dataEmotional = [];
+
+function animationGetter(element, type, value) {
+	document.getElementById(element).style[type] = value;
+}
 
 function goBack() {
-	console.log('back');
-	document.getElementById('minigraphs').style.opacity = '0';
-	document.getElementById('minigraphs').style.transition = 'opacity 0.3s';
-	document.getElementById('minigraphs').style.pointerEvents = 'none';
 	document.getElementById('dob').value = '';
-	document.getElementById('minigraphAp').remove();
 
-	//document.getElementById('goBack').style.display="none";
+	animationGetter('response', 'opacity', '0');
+	animationGetter('response', 'transition', 'opacity 0.3s');
 	setTimeout(function () {
-		document.getElementById('goBack').style.opacity = '0';
-		document.getElementById('goBack').style.transition = 'opacity 0.1s';
-		document.getElementById('goBack').style.pointerEvents = 'none';
-	}, 300);
+		animationGetter('response', 'display', 'none');
+	}, 400);
 
 	setTimeout(function () {
-		document.getElementById('first-hit').style.opacity = '1';
-		document.getElementById('first-hit').style.transition = 'opacity 0.3s';
-		document.getElementById('first-hit').style.pointerEvents = 'all';
-	}, 1000);
+		animationGetter('content', 'display', 'block');
+		setTimeout(function () {
+			animationGetter('content', 'opacity', '1');
+			animationGetter('content', 'transition', 'opacity 0.3s');
+			animationGetter('content', 'pointerEvents', 'all');
+		}, 600);
+	}, 500);
+
+	var removal = document.getElementById('line-chart');
+	var removalChildNode = removal.getElementsByTagName('div')[0];
+	removalChildNode.remove();
+
+	var removal2 = document.getElementById('radial-chart');
+	var removal22 = removal2.getElementsByTagName('div')[0];
+	var removal23 = removal2.getElementsByTagName('div')[1];
+	var removal24 = removal2.getElementsByTagName('div')[2];
+
+	removal22.remove();
+	removal23.remove();
+	removal24.remove();
 }
 
 function getInput() {
@@ -57,93 +72,24 @@ function getInput() {
 
 	getValues();
 
-	var dataIntellectual = coordsIntellectual.map(function (d) {
-		return {
-			x: d[0],
-			y: d[1],
-		};
-	});
-
-	var chartStyling = {
-		colors: ['#72DEC2', '#ffffff', '#FFB545'],
-		series: [
-			{
-				type: 'line',
-				name: 'Intellectual',
-				data: dataIntellectual,
-			},
-			{
-				type: 'line',
-				name: 'Physical',
-				data: [
-					{x: '06/05/2014', y: 20},
-					{x: '05/08/2014', y: 87},
-				],
-			},
-			{
-				type: 'line',
-				name: 'Emotional',
-				data: [
-					{x: '06/05/2014', y: 10},
-					{x: '05/08/2014', y: 67},
-				],
-			},
-		],
-		chart: {
-			id: 'minigraphAp',
-			redrawOnParentResize: true,
-			width: '100%',
-			height: '320px',
-			type: 'line',
-			sparkline: {
-				enabled: true,
-			},
-		},
-		stroke: {
-			curve: 'smooth',
-		},
-		fill: {
-			opacity: 1,
-		},
-		yaxis: {
-			borderColor: '#000',
-			min: 0,
-		},
-		stroke: {
-			show: true,
-			curve: 'smooth',
-			lineCap: 'round',
-			width: 6,
-			dashArray: 0,
-		},
-
-		tooltip: {
-			enabled: true,
-			theme: 'dark',
-		},
-		animations: {
-			enabled: false,
-			easing: 'easeinout',
-			speed: 8000,
-			animateGradually: {
-				enabled: true,
-				delay: 1250,
-			},
-		},
-	};
-
-	var mainChart = new ApexCharts(document.querySelector('#line-chart'), chartStyling);
-	mainChart.render();
-
-	document.getElementById('first-hit').style.opacity = '0';
-	document.getElementById('first-hit').style.transition = 'opacity 0.3s';
-	document.getElementById('first-hit').style.pointerEvents = 'none';
+	animationGetter('content', 'opacity', '0');
+	animationGetter('content', 'transition', 'opacity 0.3s');
+	animationGetter('content', 'pointerEvents', 'none');
+	setTimeout(function () {
+		animationGetter('content', 'display', 'none');
+	}, 400);
 
 	setTimeout(function () {
-		document.getElementById('goBack').style.opacity = '1';
-		document.getElementById('goBack').style.display = 'flex';
-		document.getElementById('goBack').style.pointerEvents = 'all';
-	}, 1000);
+		animationGetter('response', 'display', 'block');
+		setTimeout(function () {
+			animationGetter('response', 'opacity', '1');
+			animationGetter('response', 'transition', 'opacity 0.3s');
+			loadToday();
+			setTimeout(function () {
+				loadMonth();
+			}, 700);
+		}, 600);
+	}, 500);
 }
 
 function search(ele) {
@@ -187,8 +133,6 @@ function getValues() {
 	computedDates.push(futureDates);
 	compliedDates = computedDates.flatMap((x) => x);
 
-	results = compliedDates.map((date) => new Date(date));
-
 	for (i = 0; i <= 31; i++) {
 		differences[i] = dateDifference(fetchedDate, compliedDates[i]);
 		intellectualValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / intellectualCycle));
@@ -196,169 +140,252 @@ function getValues() {
 		emotionalValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / emotionalCycle));
 	}
 
-	let parseDate = d3.timeFormat('%Y-%m-%d');
-
-	for (i = 0; i <= 31; i++) {
-		results[i] = parseDate(results[i]);
-	}
-
 	for (i = 0; i < 31; i++) {
-		coordsIntellectual[i] = [compliedDates[i], intellectualValues[i]];
-		coordsPhysical[i] = [compliedDates[i], physicalValues[i]];
-		coordsEmotional[i] = [compliedDates[i], emotionalValues[i]];
+		coordsIntellectual[i] = [Date.parse(compliedDates[i]).toString('dddd dd MMMM'), intellectualValues[i]];
+		coordsPhysical[i] = [Date.parse(compliedDates[i]).toString('dddd dd MMMM'), physicalValues[i]];
+		coordsEmotional[i] = [Date.parse(compliedDates[i]).toString('dddd dd MMMM'), emotionalValues[i]];
 	}
-	console.log(coordsIntellectual[0]);
-	console.log(coordsPhysical[0]);
-	console.log(coordsEmotional[0]);
-
-	setTimeout(function () {
-		console.log('a');
-	}, 0);
-
-	console.log("b");
 }
 
-var radialChartIntellectual = {
-	colors: [
-		function ({value}) {
-			if (value > 0) {
-				return '#FFFFFF';
-			} else {
-				return '#E47464';
-			}
+function loadToday() {
+	function negativeChecker(number) {
+		if (number < 0) {
+			return (number = number * -1);
+		} else {
+			return number;
+		}
+	}
+
+	var radialChartIntellectual = {
+		colors: [
+			function ({value}) {
+				if (intellectualValues[0] > 0) {
+					return '#FFFFFF';
+				} else {
+					return '#E47464';
+				}
+			},
+		],
+		series: [negativeChecker(intellectualValues[0])],
+		chart: {
+			height: 180,
+			type: 'radialBar',
+			offsetY: 0,
 		},
-	],
-	series: [20],
-	chart: {
-		height: 180,
-		type: 'radialBar',
-		offsetY: 0,
-	},
-	plotOptions: {
-		radialBar: {
-			startAngle: -135,
-			endAngle: 135,
-			dataLabels: {
-				name: {
-					fontSize: '16px',
-					color: undefined,
-					offsetY: 88,
-				},
-				value: {
-					offsetY: 48,
-					fontSize: '22px',
-					color: 'white',
-					formatter: function (val) {
-						return val + '%';
+		plotOptions: {
+			radialBar: {
+				startAngle: -135,
+				endAngle: 135,
+				dataLabels: {
+					name: {
+						fontSize: '16px',
+						fontFamily: 'Space-Mono, Monospace',
+						color: undefined,
+						offsetY: 88,
+					},
+					value: {
+						offsetY: 48,
+						fontFamily: 'Space-Mono, Monospace',
+						fontSize: '22px',
+						color: 'white',
+						formatter: function (val) {
+							return intellectualValues[0] + '%';
+						},
 					},
 				},
 			},
 		},
-	},
-	fill: {
-		type: 'fill',
-	},
-	stroke: {
-		dashArray: 2,
-	},
-	labels: ['Intellectual'],
-};
-
-var radialChartPhysical = {
-	colors: [
-		function ({value}) {
-			if (value > 0) {
-				return '#72DEC2';
-			} else {
-				return '#E47464';
-			}
+		fill: {
+			type: 'fill',
 		},
-	],
-	series: [80],
-	chart: {
-		height: 180,
-		type: 'radialBar',
-		offsetY: 0,
-	},
-	plotOptions: {
-		radialBar: {
-			startAngle: -135,
-			endAngle: 135,
-			dataLabels: {
-				name: {
-					fontSize: '16px',
-					color: undefined,
-					offsetY: 88,
-				},
-				value: {
-					offsetY: 48,
-					fontSize: '22px',
-					color: 'white',
-					formatter: function (val) {
-						return val + '%';
+		stroke: {
+			lineCap: 'round',
+			dashArray: 0,
+		},
+		labels: ['Intellectual'],
+	};
+
+	var radialChartPhysical = {
+		colors: [
+			function ({value}) {
+				if (physicalValues[0] > 0) {
+					return '#72DEC2';
+				} else {
+					return '#E47464';
+				}
+			},
+		],
+		series: [negativeChecker(physicalValues[0])],
+		chart: {
+			height: 180,
+			type: 'radialBar',
+			offsetY: 0,
+		},
+		plotOptions: {
+			radialBar: {
+				startAngle: -135,
+				endAngle: 135,
+				dataLabels: {
+					name: {
+						fontSize: '16px',
+						fontFamily: 'Space-Mono, Monospace',
+						color: undefined,
+						offsetY: 88,
+					},
+					value: {
+						offsetY: 48,
+						fontFamily: 'Space-Mono, Monospace',
+						fontSize: '22px',
+						color: 'white',
+						formatter: function (val) {
+							return physicalValues[0] + '%';
+						},
 					},
 				},
 			},
 		},
-	},
-	fill: {
-		type: 'fill',
-	},
-	stroke: {
-		dashArray: 2,
-	},
-	labels: ['Physical'],
-};
-
-var radialChartEmotional = {
-	colors: [
-		function ({value}) {
-			if (value > 0) {
-				return '#FFB545';
-			} else {
-				return '#E47464';
-			}
+		fill: {
+			type: 'fill',
 		},
-	],
-	series: [42],
-	chart: {
-		height: 180,
-		type: 'radialBar',
-		offsetY: 0,
-	},
-	plotOptions: {
-		radialBar: {
-			startAngle: -135,
-			endAngle: 135,
-			dataLabels: {
-				name: {
-					fontSize: '16px',
-					color: undefined,
-					offsetY: 88,
-				},
-				value: {
-					offsetY: 48,
-					fontSize: '22px',
-					color: 'white',
-					formatter: function (val) {
-						return val + '%';
+		stroke: {
+			lineCap: 'round',
+			dashArray: 0,
+		},
+		labels: ['Physical'],
+	};
+
+	var radialChartEmotional = {
+		colors: [
+			function ({value}) {
+				if (emotionalValues[0] > 0) {
+					return '#FFB545';
+				} else {
+					return '#E47464';
+				}
+			},
+		],
+		series: [negativeChecker(emotionalValues[0])],
+		chart: {
+			height: 180,
+			type: 'radialBar',
+			offsetY: 0,
+		},
+		plotOptions: {
+			radialBar: {
+				startAngle: -135,
+				endAngle: 135,
+				dataLabels: {
+					name: {
+						fontSize: '16px',
+						fontFamily: 'Space-Mono, Monospace',
+						color: undefined,
+						offsetY: 88,
+					},
+					value: {
+						offsetY: 48,
+						fontFamily: 'Space-Mono, Monospace',
+						fontSize: '22px',
+						color: 'white',
+						formatter: function (val) {
+							return emotionalValues[0] + '%';
+						},
 					},
 				},
 			},
 		},
-	},
-	fill: {
-		type: 'fill',
-	},
-	stroke: {
-		dashArray: 2,
-	},
-	labels: ['Emotional'],
-};
+		fill: {
+			type: 'fill',
+		},
+		stroke: {
+			lineCap: 'round',
+			dashArray: 0,
+		},
+		labels: ['Emotional'],
+	};
 
-var radialIntellectual = new ApexCharts(document.querySelector('#radial-chart-intellectual'), radialChartIntellectual);
-var radialPhysical = new ApexCharts(document.querySelector('#radial-chart-physical'), radialChartPhysical);
-var radialEmotional = new ApexCharts(document.querySelector('#radial-chart-emotional'), radialChartEmotional);
-radialIntellectual.render();
-radialPhysical.render();
-radialEmotional.render();
+	var radialIntellectual = new ApexCharts(document.querySelector('#radial-chart-intellectual'), radialChartIntellectual);
+	var radialPhysical = new ApexCharts(document.querySelector('#radial-chart-physical'), radialChartPhysical);
+	var radialEmotional = new ApexCharts(document.querySelector('#radial-chart-emotional'), radialChartEmotional);
+	radialIntellectual.render();
+	radialPhysical.render();
+	radialEmotional.render();
+}
+
+function loadMonth() {
+	dataIntellectual = coordsIntellectual.map(function (d) {
+		return {
+			x: d[0],
+			y: d[1],
+		};
+	});
+
+	dataPhysical = coordsPhysical.map(function (d) {
+		return {
+			x: d[0],
+			y: d[1],
+		};
+	});
+
+	dataEmotional = coordsEmotional.map(function (d) {
+		return {
+			x: d[0],
+			y: d[1],
+		};
+	});
+
+	var chartStyling = {
+		colors: ['#FFFFFF', '#72DEC2', '#FFB545'],
+		series: [
+			{
+				name: 'Intellectual',
+				data: dataIntellectual,
+			},
+			{
+				name: 'Physical',
+				data: dataPhysical,
+			},
+			{
+				name: 'Emotional',
+				data: dataEmotional,
+			},
+		],
+		tooltip: {
+			enabled: true,
+			theme: 'dark',
+			fontFamily: 'Space-Mono, Monospace',
+			x: {
+				show: true,
+			},
+		},
+		legend: {
+			show: false,
+		},
+		toolbar: {
+			show: false,
+		},
+		grid: {
+			show: false,
+		},
+		chart: {
+			id: 'test',
+			height: '100%',
+			parentHeightOffset: 105,
+			sparkline: {
+				enabled: false,
+			},
+			zoom: {
+				enabled: false,
+			},
+		},
+		dataLabels: {
+			enabled: false,
+		},
+		stroke: {
+			curve: 'straight',
+			lineCap: 'round',
+			width: 10,
+		},
+	};
+	var mainChart = new ApexCharts(document.querySelector('#line-chart'), chartStyling);
+	mainChart.render();
+}

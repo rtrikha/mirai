@@ -101,6 +101,10 @@ body {
   color: #aaaaaa;
 }
 
+#mirai-logo {
+  cursor: pointer;
+}
+
 /*
 
 *	Defined content on first hit
@@ -254,7 +258,7 @@ body {
   margin-top: 4vh;
 }
 
-.content-modal .response {
+.content-modal .response-modal {
   color: #ffffff;
   font-family: Space-Mono;
   font-size: 12px;
@@ -305,55 +309,6 @@ body {
   height: 400px;
 }
 
-#GitHub {
-  bottom: auto;
-  width: 100%;
-  color: white;
-  text-align: right;
-}
-
-#GitHub {
-  opacity: 0.5;
-  font-family: Space-Mono;
-  font-size: 12px;
-}
-
-#GitHub :hover {
-  opacity: 1;
-}
-
-#GitHub :link {
-  text-decoration: none;
-  color: #636772;
-}
-
-#GitHub :visited {
-  text-decoration: none;
-  color: #636772;
-}
-
-.go-back {
-  z-index: 9999999;
-  position: absolute;
-  left: 50%;
-  margin-top: 24vh;
-}
-
-.text-back {
-  z-index: 99999;
-  position: relative;
-  color: #555555;
-  position: relative;
-  font-family: Space-Mono;
-  font-size: 14px;
-  cursor: pointer;
-  margin: 0 auto;
-}
-
-.text-back:hover {
-  color: white;
-}
-
 /*
 
 * line-chart
@@ -369,7 +324,15 @@ body {
   border-bottom: none !important;
 }
 
-#SvgjsLine1007 {
+#SvgjsLine1013 {
+  stroke: #333333;
+}
+
+#SvgjsLine1061 {
+  stroke: #333333;
+}
+
+#SvgjsLine1306 {
   stroke: #333333;
 }
 
@@ -378,6 +341,12 @@ body {
 * radial-charts
 
 */
+.response {
+  margin-top: 6vh;
+  height: 40vh;
+  opacity: 0;
+}
+
 .radial-chart {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -390,6 +359,37 @@ body {
   height: max-content;
   padding: 0;
   margin: auto;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.apexcharts-tooltip-title {
+  font-family: Space-Mono !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+.apexcharts-tooltip-text {
+  font-family: Space-Mono !important;
+  font-size: 12px !important;
+}
+
+.line-chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 10vh;
+  width: 80%;
+  min-height: 0 !important;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.apexcharts-inner.apexcharts-graphical {
+  -webkit-transform: translate(0, 19) !important;
+          transform: translate(0, 19) !important;
 }
 
 .apexcharts-radialbar-track.apexcharts-track {
@@ -402,5 +402,81 @@ body {
       flex-basis: 33%;
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
+}
+
+.apexcharts-xaxis {
+  display: none;
+}
+
+.apexcharts-yaxis {
+  display: none;
+}
+
+.apexcharts-toolbar {
+  display: none !important;
+}
+
+.apexcharts-grid {
+  display: none !important;
+}
+
+.apexcharts-xaxistooltip.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark {
+  display: none !important;
+}
+
+.apexcharts-legend {
+  display: none;
+}
+
+.chart-title {
+  font-size: 14px;
+  font-family: Space-Mono;
+  color: #333333;
+  font-weight: 400;
+  text-align: center;
+}
+
+#chart-title-month {
+  -webkit-transform: translate(0px, 40px);
+          transform: translate(0px, 40px);
+}
+
+.line-chart-wrapper {
+  margin-top: 6vh;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 4vh;
+  width: 84%;
+  text-align: right;
+  margin-right: 8vw;
+  margin-left: 8vw;
+  -webkit-animation-name: reveal-footer;
+          animation-name: reveal-footer;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  display: none;
+  opacity: 0;
+}
+
+#gitLink {
+  bottom: auto;
+  width: 100%;
+  color: #333333;
+  cursor: pointer;
+  font-family: Space-Mono;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#gitLink:hover {
+  color: #aaaaaa;
+}
+
+#gitLink:visited {
+  text-decoration: none;
 }
 /*# sourceMappingURL=assembly.css.map */
