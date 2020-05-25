@@ -12,12 +12,11 @@ function popLogoReveal() {
 	document.getElementById('logo-reveal').remove();
 	document.getElementById('prime-holder').style.display = 'block';
 }
-setTimeout(popLogoReveal, 0000);
+setTimeout(popLogoReveal, 000);
 
 setTimeout(function () {
 	document.getElementById('footer').style.opacity = '1';
 	document.getElementById('footer').style.transition = 'opacity 0.3s';
-	
 	document.getElementById('footer').style.display = 'block';
 }, 1500);
 

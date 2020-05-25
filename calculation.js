@@ -66,30 +66,39 @@ function goBack() {
 }
 
 function getInput() {
-	fetchedDate = document.getElementById('dob').value;
-	fetchedDate = fetchedDate.split('/').reverse('').join('-');
-	fetchedDate = fetchedDate.replace(/\s+/g, '');
+	var dateEntered = document.getElementById('dob').value;
+	var checkFuture = Date.compare(Date.today(), Date.parse(dateEntered));
+	console.log(checkFuture);
+	if (dateEntered.length == 14 && checkFuture==1 ) {
+		console.log(document.getElementById('dob').value.length);
+		fetchedDate = document.getElementById('dob').value;
+		fetchedDate = fetchedDate.split('/').reverse('').join('-');
+		fetchedDate = fetchedDate.replace(/\s+/g, '');
 
-	getValues();
+		getValues();
 
-	animationGetter('content', 'opacity', '0');
-	animationGetter('content', 'transition', 'opacity 0.3s');
-	animationGetter('content', 'pointerEvents', 'none');
-	setTimeout(function () {
-		animationGetter('content', 'display', 'none');
-	}, 400);
-
-	setTimeout(function () {
-		animationGetter('response', 'display', 'block');
+		animationGetter('content', 'opacity', '0');
+		animationGetter('content', 'transition', 'opacity 0.3s');
+		animationGetter('content', 'pointerEvents', 'none');
 		setTimeout(function () {
-			animationGetter('response', 'opacity', '1');
-			animationGetter('response', 'transition', 'opacity 0.3s');
-			loadToday();
+			animationGetter('content', 'display', 'none');
+		}, 400);
+
+		setTimeout(function () {
+			animationGetter('response', 'display', 'block');
 			setTimeout(function () {
-				loadMonth();
-			}, 700);
-		}, 600);
-	}, 500);
+				animationGetter('response', 'opacity', '1');
+				animationGetter('response', 'transition', 'opacity 0.3s');
+				loadToday();
+				setTimeout(function () {
+					loadMonth();
+				}, 700);
+			}, 600);
+		}, 500);
+	} 
+	else {
+		document.getElementById("errorText").style.display="block";
+	}
 }
 
 function search(ele) {

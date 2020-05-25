@@ -165,6 +165,15 @@ body {
 	margin-left: 16px;
 }
 
+.input .error-text{
+	font-family: $base-font-family;
+	font-size: 10px;
+	margin-top: 1vh;
+	color: #ED4C4C;
+	margin-left: 8px;
+	display: none;
+}
+
 #dob :focus {
 	border: none;
 	outline: transparent;
@@ -438,7 +447,7 @@ body {
 #gitLink {
 	bottom: auto;
 	width: 100%;
-	color: $grey-300;
+	color: $grey-200;
 	cursor: pointer;
 	font-family: $base-font-family;
 	font-size: $base-font-size;
