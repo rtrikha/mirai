@@ -33,7 +33,7 @@ body {
 	display: inline-block;
 	margin: 0;
 	width: 100vw;
-	height: 100%;
+	height: 100vh;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -51,7 +51,7 @@ body {
 	font-family: Japan;
 	letter-spacing: 2px;
 	text-align: center;
-	padding-top: 38vh;
+	padding-top: 44vh;
 	display: block;
 }
 
@@ -71,7 +71,7 @@ body {
 	//height: 100%;
 	margin-left: 8vw;
 	margin-right: 8vw;
-	margin-top: 4vh;
+	margin-top: 8vh;
 	animation-name: reveal-prime;
 	animation-delay: 0.5s;
 	animation-duration: 0.5s;
@@ -118,7 +118,7 @@ body {
 */
 
 .content {
-	margin-top: 50%;
+	margin-top: 28vh;
 	text-align: center;
 }
 
@@ -441,6 +441,7 @@ body {
 .footer {
 	position: fixed;
 	left: 0;
+	bottom: 3vh;
 	width: 84%;
 	text-align: right;
 	margin-right: 8vw;
@@ -452,6 +453,7 @@ body {
 }
 
 #gitLink {
+	bottom: auto;
 	width: 100%;
 	color: $grey-200;
 	cursor: pointer;

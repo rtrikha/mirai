@@ -10,6 +10,11 @@ $logo-reveal-size: 58px;
 $base-line-heigh: 20px;
 $base-font-family: Space-Mono;
 @font-face {
+	src: url(assets/fonts/Carbon.ttf);
+	font-family: Carbon;
+	font-weight: 700;
+}
+@font-face {
 	src: url(assets/fonts/SpaceMono-Bold.ttf);
 	font-family: Space-Mono;
 	font-weight: 700;
@@ -93,9 +98,9 @@ body {
 .about {
 	color: $grey-200;
 	cursor: pointer;
-	font-family: $base-font-family;
-	font-size: $base-font-size;
-	font-weight: 600;
+	font-family: Carbon;
+	font-size: 12px;
+	text-transform: uppercase;
 }
 
 .about:hover {
@@ -165,11 +170,11 @@ body {
 	margin-left: 16px;
 }
 
-.input .error-text{
+.input .error-text {
 	font-family: $base-font-family;
 	font-size: 10px;
 	margin-top: 1vh;
-	color: #ED4C4C;
+	color: #ed4c4c;
 	margin-left: 8px;
 	display: none;
 }
@@ -272,7 +277,6 @@ body {
 /*
 
 *	Minigraphs
-!	Still have to work on it
 
 */
 
@@ -335,6 +339,7 @@ body {
 * radial-charts
 
 */
+
 .response {
 	margin-top: 6vh;
 	height: 40vh;
@@ -365,16 +370,14 @@ body {
 
 .line-chart {
 	display: flex;
-	padding-top: 10vh;
+	position: relative;
 	width: 80%;
 	min-height: 0 !important;
-	margin-left: 8vw;
-	margin-right: 8vw;
-	justify-content: space-around;
+	margin: 10vh auto 0 auto;
+	transform: translate(-2vw, 0px);
 }
 
 .apexcharts-inner.apexcharts-graphical {
-	//transform: scale(0.6);
 	transform: translate(0, 19) !important;
 }
 
@@ -414,26 +417,32 @@ body {
 
 .chart-title {
 	font-size: $base-font-size;
-	font-family: $base-font-family;
+	font-family: Carbon;
 	color: $grey-300;
 	font-weight: 400;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 #chart-title-month {
-	transform: translate(0px, 40px);
+	transform: translate(0px, 60px);
 }
 
 .line-chart-wrapper {
 	margin-top: 6vh;
+	position: relative;
 }
 
-//
+/*
+
+* Footer
+
+*/
 
 .footer {
 	position: fixed;
 	left: 0;
-	bottom: 4vh;
+	bottom: 3vh;
 	width: 84%;
 	text-align: right;
 	margin-right: 8vw;
@@ -449,8 +458,9 @@ body {
 	width: 100%;
 	color: $grey-200;
 	cursor: pointer;
-	font-family: $base-font-family;
-	font-size: $base-font-size;
+	font-family: Carbon;
+	font-size: 12px;
+	text-transform: uppercase;
 	font-weight: 600;
 	text-decoration: none;
 }

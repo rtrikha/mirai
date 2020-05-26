@@ -1,4 +1,10 @@
 @font-face {
+  src: url(assets/fonts/Carbon.ttf);
+  font-family: Carbon;
+  font-weight: 700;
+}
+
+@font-face {
   src: url(assets/fonts/SpaceMono-Bold.ttf);
   font-family: Space-Mono;
   font-weight: 700;
@@ -92,9 +98,9 @@ body {
 .about {
   color: #555555;
   cursor: pointer;
-  font-family: Space-Mono;
-  font-size: 14px;
-  font-weight: 600;
+  font-family: Carbon;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .about:hover {
@@ -168,7 +174,7 @@ body {
   font-family: Space-Mono;
   font-size: 10px;
   margin-top: 1vh;
-  color: #ED4C4C;
+  color: #ed4c4c;
   margin-left: 8px;
   display: none;
 }
@@ -279,7 +285,6 @@ body {
 /*
 
 *	Minigraphs
-!	Still have to work on it
 
 */
 .minigraphs {
@@ -387,13 +392,12 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 10vh;
+  position: relative;
   width: 80%;
   min-height: 0 !important;
-  margin-left: 8vw;
-  margin-right: 8vw;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  margin: 10vh auto 0 auto;
+  -webkit-transform: translate(-2vw, 0px);
+          transform: translate(-2vw, 0px);
 }
 
 .apexcharts-inner.apexcharts-graphical {
@@ -439,25 +443,32 @@ body {
 
 .chart-title {
   font-size: 14px;
-  font-family: Space-Mono;
+  font-family: Carbon;
   color: #333333;
   font-weight: 400;
   text-align: center;
+  text-transform: uppercase;
 }
 
 #chart-title-month {
-  -webkit-transform: translate(0px, 40px);
-          transform: translate(0px, 40px);
+  -webkit-transform: translate(0px, 60px);
+          transform: translate(0px, 60px);
 }
 
 .line-chart-wrapper {
   margin-top: 6vh;
+  position: relative;
 }
 
+/*
+
+* Footer
+
+*/
 .footer {
   position: fixed;
   left: 0;
-  bottom: 4vh;
+  bottom: 3vh;
   width: 84%;
   text-align: right;
   margin-right: 8vw;
@@ -475,8 +486,9 @@ body {
   width: 100%;
   color: #555555;
   cursor: pointer;
-  font-family: Space-Mono;
-  font-size: 14px;
+  font-family: Carbon;
+  font-size: 12px;
+  text-transform: uppercase;
   font-weight: 600;
   text-decoration: none;
 }

@@ -33,6 +33,10 @@ function animationGetter(element, type, value) {
 	document.getElementById(element).style[type] = value;
 }
 
+function elementRemover(element){
+	document.getElementById(element).remove();
+}
+
 function goBack() {
 	document.getElementById('dob').value = '';
 
@@ -68,6 +72,7 @@ function goBack() {
 function getInput() {
 	var dateEntered = document.getElementById('dob').value;
 	var checkFuture = Date.compare(Date.today(), Date.parse(dateEntered));
+
 	console.log(checkFuture);
 	if (dateEntered.length == 14 && checkFuture==1 ) {
 		console.log(document.getElementById('dob').value.length);

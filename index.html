@@ -4,12 +4,9 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assembly.css" />
-		<!-- <link rel="stylesheet" media="screen and (max-device-width: 720px)" href="tab-assembly.css" /> -->
-		<!-- <link rel="stylesheet" media="screen and (max-device-width: 520px)" href="mobile-assembly.css" /> -->
-		<script src="https://d3js.org/d3.v5.min.js"></script>
-		<script src="https://d3js.org/d3-transition.v1.min.js"></script>
-		<script src="https://d3js.org/d3-time.v1.min.js"></script>
-		<script src="https://d3js.org/d3-time-format.v2.min.js"></script>
+		<link rel="shortcut icon" type="image/png" href="Assets/logo/miraifavicon.png"/>
+		<link rel="stylesheet" media="screen and (max-device-width: 900px)" href="tab-assembly.css" />
+		<link rel="stylesheet" media="screen and (max-device-width: 560px)" href="mobile-assembly.css" />
 		<link rel="stylesheet" href="dist/apexcharts.css" />
 		<script src="dist/apexcharts.min.js"></script>
 		<script type="text/javascript" src="dist/date.js"></script>
@@ -21,7 +18,7 @@
 		<div class="prime-holder" id="prime-holder">
 			<div class="header">
 				<img src="assets/logo/mirai-white-40X40.svg" alt="mirai" id="mirai-logo" onclick="goBack()" />
-				<div class="about">
+				<div class="about" id="about">
 					about
 				</div>
 				<div class="modal">
@@ -84,7 +81,7 @@
 						<path id="sine" d="M10,10 L50,100 L90,50"></path>
 					</svg>
 					<div class="input">
-						<label class="title" for="DOB">
+						<label class="title" id="dob-title" for="DOB">
 							Enter your date of birth
 						</label>
 						<div class="dob-enterer">
@@ -98,7 +95,7 @@
 				</div>
 			</div>
 
-			<div class="modal">
+			<div class="modal" id="modal">
 				<div class="what">
 					<div class="heading">
 						What is mirai?
