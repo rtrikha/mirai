@@ -28,12 +28,16 @@ var coordsEmotional = [];
 var dataIntellectual = [];
 var dataPhysical = [];
 var dataEmotional = [];
+var radialIntellectual;
+var radialPhysical;
+var radialEmotional;
+var mainChart;
 
 function animationGetter(element, type, value) {
 	document.getElementById(element).style[type] = value;
 }
 
-function elementRemover(element){
+function elementRemover(element) {
 	document.getElementById(element).remove();
 }
 
@@ -55,18 +59,12 @@ function goBack() {
 		}, 600);
 	}, 500);
 
-	var removal = document.getElementById('line-chart');
-	var removalChildNode = removal.getElementsByTagName('div')[0];
-	removalChildNode.remove();
 
-	var removal2 = document.getElementById('radial-chart');
-	var removal22 = removal2.getElementsByTagName('div')[0];
-	var removal23 = removal2.getElementsByTagName('div')[1];
-	var removal24 = removal2.getElementsByTagName('div')[2];
+	radialPhysical.destroy();
+	radialIntellectual.destroy();
+	radialEmotional.destroy();
+	mainChart.destroy();
 
-	removal22.remove();
-	removal23.remove();
-	removal24.remove();
 }
 
 function getInput() {
@@ -74,7 +72,7 @@ function getInput() {
 	var checkFuture = Date.compare(Date.today(), Date.parse(dateEntered));
 
 	console.log(checkFuture);
-	if (dateEntered.length == 14 && checkFuture==1 ) {
+	if (dateEntered.length == 14 && checkFuture == 1) {
 		console.log(document.getElementById('dob').value.length);
 		fetchedDate = document.getElementById('dob').value;
 		fetchedDate = fetchedDate.split('/').reverse('').join('-');
@@ -100,9 +98,8 @@ function getInput() {
 				}, 700);
 			}, 600);
 		}, 500);
-	} 
-	else {
-		document.getElementById("errorText").style.display="block";
+	} else {
+		document.getElementById('errorText').style.display = 'block';
 	}
 }
 
@@ -317,9 +314,9 @@ function loadToday() {
 		labels: ['Emotional'],
 	};
 
-	var radialIntellectual = new ApexCharts(document.querySelector('#radial-chart-intellectual'), radialChartIntellectual);
-	var radialPhysical = new ApexCharts(document.querySelector('#radial-chart-physical'), radialChartPhysical);
-	var radialEmotional = new ApexCharts(document.querySelector('#radial-chart-emotional'), radialChartEmotional);
+	radialIntellectual = new ApexCharts(document.querySelector('#radial-chart-intellectual'), radialChartIntellectual);
+	radialPhysical = new ApexCharts(document.querySelector('#radial-chart-physical'), radialChartPhysical);
+	radialEmotional = new ApexCharts(document.querySelector('#radial-chart-emotional'), radialChartEmotional);
 	radialIntellectual.render();
 	radialPhysical.render();
 	radialEmotional.render();
@@ -370,6 +367,11 @@ function loadMonth() {
 			x: {
 				show: true,
 			},
+			y: {
+				formatter: function (value) {
+					return `${value}%`;
+				},
+			},
 		},
 		legend: {
 			show: false,
@@ -380,6 +382,7 @@ function loadMonth() {
 		grid: {
 			show: false,
 		},
+
 		chart: {
 			id: 'test',
 			height: '100%',
@@ -400,6 +403,6 @@ function loadMonth() {
 			width: 10,
 		},
 	};
-	var mainChart = new ApexCharts(document.querySelector('#line-chart'), chartStyling);
+	mainChart = new ApexCharts(document.querySelector('#line-chart'), chartStyling);
 	mainChart.render();
 }

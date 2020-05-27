@@ -248,8 +248,8 @@ body {
   opacity: 1;
   visibility: visible;
   position: fixed;
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1);
+          transform: scale(1);
   width: 100%;
   height: 100%;
   z-index: 999;

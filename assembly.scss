@@ -71,7 +71,7 @@ body {
 	//height: 100%;
 	margin-left: 8vw;
 	margin-right: 8vw;
-	margin-top: 8vh;
+	margin-top: 10vh;
 	animation-name: reveal-prime;
 	animation-delay: 0.5s;
 	animation-duration: 0.5s;
@@ -244,7 +244,7 @@ body {
 	opacity: 1;
 	visibility: visible;
 	position: fixed;
-	transform: scale(1.02);
+	transform: scale(1);
 	width: 100%;
 	height: 100%;
 	z-index: 999;
