@@ -71,7 +71,6 @@ function getInput() {
 	var dateEntered = document.getElementById('dob').value;
 	var checkFuture = Date.compare(Date.today(), Date.parse(dateEntered));
 
-	console.log(checkFuture);
 	if (dateEntered.length == 14 && checkFuture == 1) {
 		console.log(document.getElementById('dob').value.length);
 		fetchedDate = document.getElementById('dob').value;

@@ -1,5 +1,5 @@
 var supportablewWidth = 560;
-var logoReveal = 1000;
+var logoReveal = 5000;
 
 animationGetter('prime-holder', 'display', 'none');
 animationGetter('response', 'display', 'none');
