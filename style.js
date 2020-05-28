@@ -51,7 +51,7 @@ if (screen.width <= supportablewWidth) {
 	elementRemover('response');
 	elementRemover('dob');
 	document.getElementById('dob-title').innerHTML =
-		'Thanks for visiting us, currenltly we dont suppport this device. But hey, we are constantly working';
+		'Thanks for visiting us, currently we dont suppport this device. But hey, we are constantly working';
 	sampleWave();
 } else {
 	setTimeout(function () {
