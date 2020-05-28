@@ -4,12 +4,15 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assembly.css" />
-		<link rel="shortcut icon" type="image/png" href="Assets/logo/miraifavicon.png"/>
+		<link rel="shortcut icon" type="image/png" href="Assets/logo/miraifavicon.png" />
 		<link rel="stylesheet" media="screen and (max-device-width: 900px)" href="tab-assembly.css" />
 		<link rel="stylesheet" media="screen and (max-device-width: 560px)" href="mobile-assembly.css" />
 		<link rel="stylesheet" href="dist/apexcharts.css" />
 		<script src="dist/apexcharts.min.js"></script>
 		<script type="text/javascript" src="dist/date.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+
 		<title>mirai</title>
 	</head>
 	<body>
@@ -151,6 +154,22 @@
 				</div>
 			</div>
 		</div>
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: 'AIzaSyAurOthzeIWKdgyj39OWsJtS_YN4L_-VXw',
+				authDomain: 'mirai-5efba.firebaseapp.com',
+				databaseURL: 'https://mirai-5efba.firebaseio.com',
+				projectId: 'mirai-5efba',
+				storageBucket: 'mirai-5efba.appspot.com',
+				messagingSenderId: '809394994190',
+				appId: '1:809394994190:web:a9f711e27f33a15306905f',
+				measurementId: 'G-2BD4SK0EPB',
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			firebase.analytics();
+		</script>
 	</body>
 	<script src="calculation.js"></script>
 	<script src="blackbox.js"></script>
