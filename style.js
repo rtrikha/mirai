@@ -1,5 +1,5 @@
 var supportablewWidth = 560;
-var logoReveal = 5000;
+var logoReveal = 1000;
 
 animationGetter('prime-holder', 'display', 'none');
 animationGetter('response', 'display', 'none');
@@ -50,85 +50,104 @@ if (screen.width <= supportablewWidth) {
 	elementRemover('modal');
 	elementRemover('response');
 	elementRemover('dob');
-	document.getElementById('dob-title').innerHTML =
-		'Thanks for visiting us, currently we dont suppport this device. But hey, we are constantly updating';
+	document.getElementById('dob-title').innerHTML = 'Thanks for visiting us, currently we just support desktop version. But hey, we are constantly updating';
 	sampleWave();
 } else {
-	setTimeout(function () {
-		animationGetter('footer', 'display', 'block');
-		animationGetter('footer', 'opacity', '1');
-	}, logoReveal + 1400);
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+	var isSafari =
+		/constructor/i.test(window.HTMLElement) ||
+		(function (p) {
+			return p.toString() === '[object SafariRemoteNotification]';
+		})(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+	var isIE = /*@cc_on!@*/false || !!document.documentMode;
 
-	/*
 
-*	DOB input field modulator
+	if (isFirefox == true) {
+		elementRemover('line-chart');
+		document.getElementById('chart-title-month').innerHTML = 'We dont support month view in this browser. For best experience use Chrome';
+		sampleWave();
+	} else if (isSafari == true || isIE==true) {
+		elementRemover('response');
+		elementRemover('dob');
+		sampleWave();
+		document.getElementById('dob-title').innerHTML = 'We dont support this browser as of now. For best experience use Chrome';
+	} else {
+		setTimeout(function () {
+			animationGetter('footer', 'display', 'block');
+			animationGetter('footer', 'opacity', '1');
+		}, logoReveal + 1400);
 
-*/
+		/*
+	
+	*	DOB input field modulator
+	
+	*/
 
-	var date = document.getElementById('dob');
+		var date = document.getElementById('dob');
 
-	function checkValue(str, max) {
-		if (str.charAt(0) !== '0' || str == '00') {
-			var num = parseInt(str);
-			if (isNaN(num) || num <= 0 || num > max) num = 1;
-			str = num > parseInt(max.toString().charAt(0)) && num.toString().length == 1 ? '0' + num : num.toString();
+		function checkValue(str, max) {
+			if (str.charAt(0) !== '0' || str == '00') {
+				var num = parseInt(str);
+				if (isNaN(num) || num <= 0 || num > max) num = 1;
+				str = num > parseInt(max.toString().charAt(0)) && num.toString().length == 1 ? '0' + num : num.toString();
+			}
+			return str;
 		}
-		return str;
-	}
 
-	date.addEventListener('input', function (e) {
-		this.type = 'text';
-		var input = this.value;
-		if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
-		var values = input.split('/').map(function (v) {
-			return v.replace(/\D/g, '');
+		date.addEventListener('input', function (e) {
+			this.type = 'text';
+			var input = this.value;
+			if (/\D\/$/.test(input)) input = input.substr(0, input.length - 3);
+			var values = input.split('/').map(function (v) {
+				return v.replace(/\D/g, '');
+			});
+			if (values[0]) values[0] = checkValue(values[0], 31);
+			if (values[1]) values[1] = checkValue(values[1], 12);
+			var output = values.map(function (v, i) {
+				return v.length == 2 && i < 2 ? v + ' / ' : v;
+			});
+			this.value = output.join('').substr(0, 14);
 		});
-		if (values[0]) values[0] = checkValue(values[0], 31);
-		if (values[1]) values[1] = checkValue(values[1], 12);
-		var output = values.map(function (v, i) {
-			return v.length == 2 && i < 2 ? v + ' / ' : v;
-		});
-		this.value = output.join('').substr(0, 14);
-	});
 
-	/*
+		/*
+	
+	*	Sample wave animation for first-hit
+	
+	*/
 
-*	Sample wave animation for first-hit
+		sampleWave();
 
-*/
+		/*
+	
+	*	Modal for about
+	
+	*/
 
-	sampleWave();
+		var modal = document.querySelector('.modal');
+		var trigger = document.querySelector('.about');
+		var closeButton = document.querySelector('.close-button');
 
-	/*
-
-*	Modal for about
-
-*/
-
-	var modal = document.querySelector('.modal');
-	var trigger = document.querySelector('.about');
-	var closeButton = document.querySelector('.close-button');
-
-	function toggleModal() {
-		modal.classList.toggle('show-modal');
-	}
-
-	function windowOnClick(event) {
-		if (event.target === modal) {
-			toggleModal();
+		function toggleModal() {
+			modal.classList.toggle('show-modal');
 		}
+
+		function windowOnClick(event) {
+			if (event.target === modal) {
+				toggleModal();
+			}
+		}
+
+		trigger.addEventListener('click', toggleModal);
+		closeButton.addEventListener('click', toggleModal);
+		window.addEventListener('click', windowOnClick);
+
+		/*
+	
+	*	Chart headings
+	
+	*/
+
+		var dateToday = Date.parse(Date.today()).toString('dddd dd MMMM');
+		document.getElementById('chart-title-today').innerHTML = `Biorhythm for Today, ${dateToday}`;
 	}
-
-	trigger.addEventListener('click', toggleModal);
-	closeButton.addEventListener('click', toggleModal);
-	window.addEventListener('click', windowOnClick);
-
-/*
-
-*	Chart headings
-
-*/
-
-	var dateToday = Date.parse(Date.today()).toString('dddd dd MMMM');
-	document.getElementById('chart-title-today').innerHTML = `Biorhythm for Today, ${dateToday}`;
 }

@@ -59,9 +59,10 @@ body {
 
 */
 .prime-holder {
-  margin-left: 8vw;
-  margin-right: 8vw;
-  margin-top: 10vh;
+  height: 100%;
+  margin-left: 0vw;
+  margin-right: 0vw;
+  margin-top: 0vh;
   -webkit-animation-name: reveal-prime;
           animation-name: reveal-prime;
   -webkit-animation-delay: 0.5s;
@@ -87,6 +88,9 @@ body {
 
 */
 .header {
+  padding-left: 8vw;
+  padding-top: 10vh;
+  padding-right: 8vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

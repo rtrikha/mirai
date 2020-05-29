@@ -1,4 +1,3 @@
-//expressions in js //block in js //iife
 const physicalCycle = 23;
 const emotionalCycle = 28;
 const intellectualCycle = 33;
@@ -72,12 +71,13 @@ function getInput() {
 	var checkFuture = Date.compare(Date.today(), Date.parse(dateEntered));
 
 	if (dateEntered.length == 14 && checkFuture == 1) {
-		console.log(document.getElementById('dob').value.length);
+
 		fetchedDate = document.getElementById('dob').value;
 		fetchedDate = fetchedDate.split('/').reverse('').join('-');
 		fetchedDate = fetchedDate.replace(/\s+/g, '');
 
 		getValues();
+
 
 		animationGetter('content', 'opacity', '0');
 		animationGetter('content', 'transition', 'opacity 0.3s');
@@ -97,6 +97,7 @@ function getInput() {
 				}, 700);
 			}, 600);
 		}, 500);
+
 	} else {
 		document.getElementById('errorText').style.display = 'block';
 	}
@@ -121,15 +122,12 @@ function getValues() {
 	}
 
 	for (i = 1; i <= 31; i++) {
-		//past seven days
 		var back = new Date(today);
 		back.setDate(back.getDate() - i);
 		var ddBack = back.getDate();
 		var mmBack = back.getMonth() + 1;
 		var yyBack = back.getFullYear();
-		//backDates[i] = yyBack + '-' + mmBack + '-' + ddBack;
 
-		//future seven days
 		var future = new Date(today);
 		future.setDate(future.getDate() + i);
 		var ddFuture = future.getDate();
@@ -142,7 +140,8 @@ function getValues() {
 	computedDates.push(today);
 	computedDates.push(futureDates);
 	compliedDates = computedDates.flatMap((x) => x);
-
+	
+	
 	for (i = 0; i <= 31; i++) {
 		differences[i] = dateDifference(fetchedDate, compliedDates[i]);
 		intellectualValues[i] = Math.round(100 * Math.sin((2 * pi * differences[i]) / intellectualCycle));
@@ -155,7 +154,10 @@ function getValues() {
 		coordsPhysical[i] = [Date.parse(compliedDates[i]).toString('dddd dd MMMM'), physicalValues[i]];
 		coordsEmotional[i] = [Date.parse(compliedDates[i]).toString('dddd dd MMMM'), emotionalValues[i]];
 	}
+	
+
 }
+
 
 function loadToday() {
 	function negativeChecker(number) {
@@ -405,3 +407,4 @@ function loadMonth() {
 	mainChart = new ApexCharts(document.querySelector('#line-chart'), chartStyling);
 	mainChart.render();
 }
+
