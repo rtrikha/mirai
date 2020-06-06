@@ -2,15 +2,15 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="shortcut icon" type="image/png" href="assets/logo/miraifavicon.png" />
-		<link rel="icon" type="image/png" href="assets/logo/miraifavicon.png" />
+		<link rel="shortcut icon" type="image/png" href="resources/logo/miraifavicon.png" />
+		<link rel="icon" type="image/png" href="resources/logo/miraifavicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="assembly.css" />
-		<link rel="stylesheet" media="screen and (max-device-width: 900px)" href="tab-assembly.css" />
-		<link rel="stylesheet" media="screen and (max-device-width: 560px)" href="mobile-assembly.css" />
-		<link rel="stylesheet" href="dist/apexcharts.css" />
-		<script src="dist/apexcharts.min.js"></script>
-		<script type="text/javascript" src="dist/date.js"></script>
+		<link rel="stylesheet" href="styling/assembly.css" />
+		<link rel="stylesheet" media="screen and (max-device-width: 900px)" href="styling/tab-assembly.css" />
+		<link rel="stylesheet" media="screen and (max-device-width: 560px)" href="styling/mobile-assembly.css" />
+		<link rel="stylesheet" href="js/apexcharts.css" />
+		<script src="js/apexcharts.min.js"></script>
+		<script type="text/javascript" src="js/date.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
 
@@ -27,7 +27,7 @@
 
 		<div class="prime-holder" id="prime-holder">
 			<div class="header">
-				<img src="assets/logo/mirai-white-40X40.svg" alt="mirai" id="mirai-logo" onclick="goBack()" />
+				<img src="resources/logo/mirai-white-40X40.svg" alt="mirai" id="mirai-logo" onclick="goBack()" />
 				<div class="about" id="about">
 					about
 				</div>
@@ -96,7 +96,7 @@
 						</label>
 						<div class="dob-enterer">
 							<input type="text" id="dob" name="dob" placeholder="DD / MM / YYYY" onkeydown="search(this)" minlength="14" />
-							<img src="assets/icons/enter.svg" alt="entrer" id="enter-icon" onclick="getInput()" />
+							<img src="resources/icons/enter.svg" alt="entrer" id="enter-icon" onclick="getInput()" />
 						</div>
 						<div class="error-text" id="errorText">
 							please enter valid format
@@ -178,7 +178,7 @@
 			firebase.analytics();
 		</script>
 	</body>
-	<script src="calculation.js"></script>
-	<script src="blackbox.js"></script>
-	<script src="style.js"></script>
+	<script src="js/calculation.js"></script>
+	<script src="js/blackbox.js"></script>
+	<script src="js/style.js"></script>
 </html>
