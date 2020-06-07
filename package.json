@@ -12,7 +12,7 @@
         "lint": "eslint src/js || true",
         "lint-scss": "stylelint styling/*.scss --syntax scss || true",
         "uglify": "mkdirp dist/js -p && uglifyjs js/*.js -m -c -o dist/js/*.js",
-        "uglifycss": "csso dist/styling/assembly.css -o dist/styling/assembly.css",
+        "uglifycss": "csso dist/styling/style.css -o dist/styling/style.css",
         "copyjs": "copyfiles ./js/*.js dist/",
         "copyhtmls": "copyfiles ./*.html dist/",
         "copyresources": "cp -R resources dist",
